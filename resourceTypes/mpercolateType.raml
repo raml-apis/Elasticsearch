@@ -1,0 +1,28 @@
+description: |
+  The multi percolate api allows to bundle multiple percolate requests into a single request, similar to what the multi search api does to search requests. The request body format is line based. Each percolate request item takes two lines, the first line is the header and the second line is the body.
+  
+  The header can contain any parameter that normally would be set via the request path or query string parameters. T here are several percolate actions, because there are multiple types of percolate requests.
+get: 
+  description: |
+    The multi percolate api allows to bundle multiple percolate requests into a single request, similar to what the multi search api does to search requests. The request body format is line based. Each percolate request item takes two lines, the first line is the header and the second line is the body.
+    
+    The header can contain any parameter that normally would be set via the request path or query string parameters. T here are several percolate actions, because there are multiple types of percolate requests.
+  body: 
+    text/plain: 
+      example: !include ../examples/mpercolateBody-example.txt
+  responses: 
+    200: 
+      body: 
+        application/json: 
+post: 
+  description: |
+    The multi percolate api allows to bundle multiple percolate requests into a single request, similar to what the multi search api does to search requests. The request body format is line based. Each percolate request item takes two lines, the first line is the header and the second line is the body.
+    
+    The header can contain any parameter that normally would be set via the request path or query string parameters. T here are several percolate actions, because there are multiple types of percolate requests.
+  body: 
+    text/plain: 
+      example: !include ../examples/mpercolateBody-example.txt
+  responses: 
+    200: 
+      body: 
+        application/json: 

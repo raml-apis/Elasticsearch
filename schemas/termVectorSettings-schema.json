@@ -1,0 +1,36 @@
+{
+  "required" : true ,
+  "$schema" : "http://json-schema.org/draft-03/schema" ,
+  "type" : "object" ,
+  "properties" : {
+    "fields" : {
+      "type" : "array" ,
+      "required" : false ,
+      "items" : [
+        {
+          "type" : "string"
+        }
+      ]
+    } ,
+    "offsets" : {
+      "type" : "boolean" ,
+      "required" : false
+    } ,
+    "payloads" : {
+      "type" : "boolean" ,
+      "required" : false
+    } ,
+    "positions" : {
+      "type" : "boolean" ,
+      "required" : false
+    } ,
+    "term_statistics" : {
+      "type" : "boolean" ,
+      "required" : false
+    } ,
+    "field_statistics" : {
+      "type" : "boolean" ,
+      "required" : false
+    }
+  }
+}

@@ -1,0 +1,9 @@
+type: base
+get: 
+  description: 'Provide low level segments information that a Lucene index (shard level) is built with. Allows to be used to provide more information on the state of a shard and an index, possibly optimization information, data "wasted" on deletes, and so on.'
+  responses: 
+    200: 
+      body: 
+        application/json: 
+          schema: segments
+          example: !include ../examples/segments-example.json

@@ -1,0 +1,7 @@
+The API notebooks are all executable! Hit "enter" in any code cell to execute it (and all cells before it that have not executed yet), or scroll to the bottom of the notebook and click "Play notebook". For more information, see [http://apinotebook.com](http://apinotebook.com).
+
+#Considerations
+
+- In order to run these notebooks you will need an Elasticsearch installation. You Elasticsearch installation URL musta have empty path. For example, http://192.168.0.1:9200 or https://www.mysite.com:9200. At some point of notebook execution you will be promped to specify protocol, domain and port of your installation URL. Here you may learn how to install Elasticsearch [http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/_installation.html](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/_installation.html).
+- One of the methods covered by the "Index/type/document" notebook requires dynamic scripting. Here you may learn how to enable dynamic scripting [http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/modules-scripting.html#_enabling_dynamic_scripting](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/modules-scripting.html#_enabling_dynamic_scripting)
+- In the "Cat, cluster, aliases" notebook you will be proposed to shut down all the nodes of your Elasticsearch installation. If you agree to do so you'll have to launch Elasticsearch again.

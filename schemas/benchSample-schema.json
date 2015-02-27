@@ -1,0 +1,53 @@
+{
+  "required" : true ,
+  "$schema" : "http://json-schema.org/draft-03/schema" ,
+  "type" : "object" ,
+  "properties" : {
+    "name" : {
+      "type" : "string" ,
+      "required" : false
+    } ,
+    "competitors" : {
+      "type" : "array" ,
+      "required" : false ,
+      "items" : [
+        {
+          "type" : "object" ,
+          "properties" : {
+            "name" : {
+              "type" : "string" ,
+              "required" : false
+            } ,
+            "requests" : {
+              "type" : "array" ,
+              "required" : false ,
+              "items" : [
+                {
+                  "type" : "object" ,
+                  "properties" : {
+                    "query" : {
+                      "type" : "object" ,
+                      "required" : false ,
+                      "properties" : {
+                        "match" : {
+                          "type" : "object" ,
+                          "required" : false ,
+                          "properties" : {
+                            "_all" : {
+                              "type" : "string" ,
+                              "required" : false
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }
+}

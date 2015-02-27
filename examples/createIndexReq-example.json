@@ -1,0 +1,7 @@
+{
+  "settings" : {
+    "index" : {
+      "mapping.allow_type_wrapper" : true
+    }
+  }
+}

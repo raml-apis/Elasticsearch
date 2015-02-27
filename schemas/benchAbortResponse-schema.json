@@ -1,0 +1,30 @@
+{
+  "required" : true ,
+  "$schema" : "http://json-schema.org/draft-03/schema" ,
+  "type" : "object" ,
+  "properties" : {
+    "aborted_benchmarks" : {
+      "type" : "array" ,
+      "required" : false ,
+      "items" : [
+        {
+          "type" : "object" ,
+          "properties" : {
+            "node" : {
+              "type" : "string" ,
+              "required" : false
+            } ,
+            "benchmark_name" : {
+              "type" : "string" ,
+              "required" : false
+            } ,
+            "aborted" : {
+              "type" : "boolean" ,
+              "required" : false
+            }
+          }
+        }
+      ]
+    }
+  }
+}

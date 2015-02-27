@@ -1,0 +1,8 @@
+{
+  "valid" : true ,
+  "_shards" : {
+    "total" : 1 ,
+    "successful" : 1 ,
+    "failed" : 0
+  }
+}

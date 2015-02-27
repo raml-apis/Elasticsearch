@@ -1,0 +1,32 @@
+{
+  "status" : "complete" ,
+  "competitors" : {
+    "my_competitor" : {
+      "summary" : {
+        "nodes" : [
+          "localhost"
+        ] ,
+        "total_iterations" : 5 ,
+        "completed_iterations" : 5 ,
+        "total_queries" : 1000 ,
+        "concurrency" : 5 ,
+        "multiplier" : 100 ,
+        "avg_warmup_time" : 43 ,
+        "statistics" : {
+          "min" : 1 ,
+          "max" : 10 ,
+          "mean" : 4.19 ,
+          "qps" : 238.663 ,
+          "std_dev" : 1.938 ,
+          "millis_per_hit" : 1.064 ,
+          "percentile_10" : 2 ,
+          "percentile_25" : 3 ,
+          "percentile_50" : 4 ,
+          "percentile_75" : 5 ,
+          "percentile_90" : 7 ,
+          "percentile_99" : 10
+        }
+      }
+    }
+  }
+}

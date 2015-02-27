@@ -1,0 +1,15 @@
+type: base
+get: 
+  queryParameters: 
+    v: 
+      description: Each of the commands accepts a query string parameter v to turn on verbose output.
+    help: 
+      description: Each of the commands accepts a query string parameter help which will output its available columns.
+    h: 
+      description: Each of the commands accepts a query string parameter h which forces only those columns to appear.
+      example: h=ip,port,heapPercent,name
+    bytes: 
+      description: Well use a byte-level resolution.
+      example: bytes=b
+  responses: 
+    200: 

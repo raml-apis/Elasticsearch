@@ -1,0 +1,6 @@
+{\"index\" : \"test\"} \n
+{\"query\" : {\"match_all\" : {}}, \"from\" : 0, \"size\" : 10} \n
+{\"index\" : \"test\", \"search_type\" : \"count\"} \n
+{\"query\" : {\"match_all\" : {}}} \n
+{} \n
+{\"query\" : {\"match_all\" : {}}} \n

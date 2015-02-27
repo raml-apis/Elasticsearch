@@ -1,0 +1,45 @@
+{
+  "required" : true ,
+  "$schema" : "http://json-schema.org/draft-03/schema" ,
+  "type" : "object" ,
+  "properties" : {
+    "twitter" : {
+      "type" : "object" ,
+      "required" : false ,
+      "properties" : {
+        "tweet" : {
+          "type" : "object" ,
+          "required" : false ,
+          "properties" : {
+            "text" : {
+              "type" : "object" ,
+              "required" : false ,
+              "properties" : {
+                "full_name" : {
+                  "type" : "string" ,
+                  "required" : false
+                } ,
+                "mapping" : {
+                  "type" : "object" ,
+                  "required" : false ,
+                  "properties" : {
+                    "text" : {
+                      "type" : "object" ,
+                      "required" : false ,
+                      "properties" : {
+                        "type" : {
+                          "type" : "string" ,
+                          "required" : false
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

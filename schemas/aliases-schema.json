@@ -1,0 +1,109 @@
+{
+  "required" : true ,
+  "$schema" : "http://json-schema.org/draft-03/schema" ,
+  "type" : "object" ,
+  "properties" : {
+    "users" : {
+      "type" : "object" ,
+      "required" : false ,
+      "properties" : {
+        "aliases" : {
+          "type" : "object" ,
+          "required" : false ,
+          "properties" : {
+            "user_13" : {
+              "type" : "object" ,
+              "required" : false ,
+              "properties" : {
+                "filter" : {
+                  "type" : "object" ,
+                  "required" : false ,
+                  "properties" : {
+                    "term" : {
+                      "type" : "object" ,
+                      "required" : false ,
+                      "properties" : {
+                        "user_id" : {
+                          "type" : "number" ,
+                          "required" : false
+                        }
+                      }
+                    }
+                  }
+                } ,
+                "index_routing" : {
+                  "type" : "string" ,
+                  "required" : false
+                } ,
+                "search_routing" : {
+                  "type" : "string" ,
+                  "required" : false
+                }
+              }
+            } ,
+            "user_14" : {
+              "type" : "object" ,
+              "required" : false ,
+              "properties" : {
+                "filter" : {
+                  "type" : "object" ,
+                  "required" : false ,
+                  "properties" : {
+                    "term" : {
+                      "type" : "object" ,
+                      "required" : false ,
+                      "properties" : {
+                        "user_id" : {
+                          "type" : "number" ,
+                          "required" : false
+                        }
+                      }
+                    }
+                  }
+                } ,
+                "index_routing" : {
+                  "type" : "string" ,
+                  "required" : false
+                } ,
+                "search_routing" : {
+                  "type" : "string" ,
+                  "required" : false
+                }
+              }
+            } ,
+            "user_12" : {
+              "type" : "object" ,
+              "required" : false ,
+              "properties" : {
+                "filter" : {
+                  "type" : "object" ,
+                  "required" : false ,
+                  "properties" : {
+                    "term" : {
+                      "type" : "object" ,
+                      "required" : false ,
+                      "properties" : {
+                        "user_id" : {
+                          "type" : "number" ,
+                          "required" : false
+                        }
+                      }
+                    }
+                  }
+                } ,
+                "index_routing" : {
+                  "type" : "string" ,
+                  "required" : false
+                } ,
+                "search_routing" : {
+                  "type" : "string" ,
+                  "required" : false
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

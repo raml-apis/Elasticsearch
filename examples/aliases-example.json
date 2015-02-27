@@ -1,0 +1,33 @@
+{
+  "users" : {
+    "aliases" : {
+      "user_13" : {
+        "filter" : {
+          "term" : {
+            "user_id" : 13
+          }
+        } ,
+        "index_routing" : "13" ,
+        "search_routing" : "13"
+      } ,
+      "user_14" : {
+        "filter" : {
+          "term" : {
+            "user_id" : 14
+          }
+        } ,
+        "index_routing" : "14" ,
+        "search_routing" : "14"
+      } ,
+      "user_12" : {
+        "filter" : {
+          "term" : {
+            "user_id" : 12
+          }
+        } ,
+        "index_routing" : "12" ,
+        "search_routing" : "12"
+      }
+    }
+  }
+}

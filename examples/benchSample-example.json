@@ -1,0 +1,17 @@
+{
+  "name" : "my_benchmark" ,
+  "competitors" : [
+    {
+      "name" : "my_competitor" ,
+      "requests" : [
+        {
+          "query" : {
+            "match" : {
+              "_all" : "a*"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

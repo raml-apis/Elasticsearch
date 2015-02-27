@@ -1,0 +1,16 @@
+type: base
+get: 
+  description: The indices recovery API provides insight into on-going index shard recoveries. Recovery status may be reported for specific indices, or cluster-wide.
+  queryParameters: 
+    detailed: 
+      description: Display a detailed view. This is primarily useful for viewing the recovery of physical index files.
+      type: boolean
+    active_only: 
+      description: Display only those recoveries that are currently on-going.
+      type: boolean
+  responses: 
+    200: 
+      body: 
+        application/json: 
+          schema: recovery
+          example: !include ../examples/recovery-example.json

@@ -1,0 +1,18 @@
+type: base
+get: 
+  description: |
+    Performs the analysis process on a text and return the tokens breakdown of the text.
+  queryParameters: 
+    analyzer: 
+      description: Can be used without specifying an index against one of the many built in analyzers
+      example: standard
+    tokenizer: 
+      example: keyword
+    filters: 
+      example: lowercase
+    text: 
+      example: this+is+a+test
+  responses: 
+    200: 
+      body: 
+        application/json: 

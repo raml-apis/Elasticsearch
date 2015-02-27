@@ -1,0 +1,4 @@
+{\"percolate\" : {\"index\" : twitter\", \"type\" : \"tweet\"}} \n
+{\"doc\" : {\"message\" : \"some text\"}} \n
+{\"count\" : {\"index\" : twitter\", \"type\" : \"tweet\"}} \n
+{\"doc\" : {\"message\" : \"some other text\"}} \n

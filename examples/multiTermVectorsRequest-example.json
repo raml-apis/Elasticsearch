@@ -1,0 +1,17 @@
+{
+  "docs" : [
+    {
+      "_index" : "testidx" ,
+      "_type" : "test" ,
+      "_id" : "2" ,
+      "term_statistics" : true
+    } , {
+      "_index" : "testidx" ,
+      "_type" : "test" ,
+      "_id" : "1" ,
+      "fields" : [
+        "text"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "nodes" : {
+    "JklnKbD7Tyqi9TP3_Q_tBg" : {
+      "name" : "Rl'nnd" ,
+      "transport_address" : "inet[/192.168.1.113:9300]"
+    }
+  } ,
+  "shards" : [
+    [
+      {
+        "index" : "twitter" ,
+        "node" : "JklnKbD7Tyqi9TP3_Q_tBg" ,
+        "primary" : true ,
+        "relocating_node" : null ,
+        "shard" : 3 ,
+        "state" : "STARTED"
+      }
+    ] ,
+    [
+      {
+        "index" : "twitter" ,
+        "node" : "JklnKbD7Tyqi9TP3_Q_tBg" ,
+        "primary" : true ,
+        "relocating_node" : null ,
+        "shard" : 4 ,
+        "state" : "STARTED"
+      }
+    ] ,
+    [
+      {
+        "index" : "twitter" ,
+        "node" : "JklnKbD7Tyqi9TP3_Q_tBg" ,
+        "primary" : true ,
+        "relocating_node" : null ,
+        "shard" : 0 ,
+        "state" : "STARTED"
+      }
+    ] ,
+    [
+      {
+        "index" : "twitter" ,
+        "node" : "JklnKbD7Tyqi9TP3_Q_tBg" ,
+        "primary" : true ,
+        "relocating_node" : null ,
+        "shard" : 2 ,
+        "state" : "STARTED"
+      }
+    ] ,
+    [
+      {
+        "index" : "twitter" ,
+        "node" : "JklnKbD7Tyqi9TP3_Q_tBg" ,
+        "primary" : true ,
+        "relocating_node" : null ,
+        "shard" : 1 ,
+        "state" : "STARTED"
+      }
+    ]
+  ]
+}

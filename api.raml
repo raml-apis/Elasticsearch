@@ -1,0 +1,1112 @@
+#%RAML 0.8
+title: Elasticsearch
+baseUri: "{protocol}://{domain}:{port}"
+mediaType: application/json
+schemas:
+  - insertsDocumentReq: !include schemas/insertsDocumentReq-schema.json
+  - insertsDocument: !include schemas/insertsDocument-schema.json
+  - getDocument: !include schemas/getDocument-schema.json
+  - createIndexReq: !include schemas/createIndexReq-schema.json
+  - createIndex: !include schemas/createIndex-schema.json
+  - deleteDocument: !include schemas/deleteDocument-schema.json
+  - updateDocumentReq: !include schemas/updateDocumentReq-schema.json
+  - mgetReq: !include schemas/mgetReq-schema.json
+  - mgetIndexReq: !include schemas/mgetIndexReq-schema.json
+  - mgetIndexTypeReq: !include schemas/mgetIndexTypeReq-schema.json
+  - queryReq: !include schemas/queryReq-schema.json
+  - query: !include schemas/query-schema.json
+  - tasksStatus: !include schemas/tasksStatus-schema.json
+  - rerouteSpec: !include schemas/rerouteSpec-schema.json
+  - clusterSettings: !include schemas/clusterSettings-schema.json
+  - nodeInfoResult: !include schemas/nodeInfoResult-schema.json
+  - benchSample: !include schemas/benchSample-schema.json
+  - benchResponse: !include schemas/benchResponse-schema.json
+  - suggestExample: !include schemas/suggestExample-schema.json
+  - suggestResponse: !include schemas/suggestResponse-schema.json
+  - searchTemplate: !include schemas/searchTemplate-schema.json
+  - searchShardsResponse: !include schemas/searchShardsResponse-schema.json
+  - mappingSample: !include schemas/mappingSample-schema.json
+  - aliasOps: !include schemas/aliasOps-schema.json
+  - aliases: !include schemas/aliases-schema.json
+  - indexTemplate: !include schemas/indexTemplate-schema.json
+  - termVectorSettings: !include schemas/termVectorSettings-schema.json
+  - termVectors: !include schemas/termVectors-schema.json
+  - multiTermVectorsRequest: !include schemas/multiTermVectorsRequest-schema.json
+  - searchReq: !include schemas/searchReq-schema.json
+  - searchResp: !include schemas/searchResp-schema.json
+  - mappingFields: !include schemas/mappingFields-schema.json
+  - settingsPut: !include schemas/settingsPut-schema.json
+  - stats: !include schemas/stats-schema.json
+  - warmerPutReq: !include schemas/warmerPutReq-schema.json
+  - recovery: !include schemas/recovery-schema.json
+  - segments: !include schemas/segments-schema.json
+  - countReq: !include schemas/countReq-schema.json
+  - count: !include schemas/count-schema.json
+  - valid: !include schemas/valid-schema.json
+  - explainReq: !include schemas/explainReq-schema.json
+  - nodes: !include schemas/nodes-schema.json
+  - percolateCountResponse: !include schemas/percolateCountResponse-schema.json
+  - suggestBody: !include schemas/suggestBody-schema.json
+  - benchAbortResponse: !include schemas/benchAbortResponse-schema.json
+resourceTypes:
+  - msearchType: !include resourceTypes/msearchType.raml
+  - recoveryType: !include resourceTypes/recoveryType.raml
+  - catResource: !include resourceTypes/catResource.raml
+  - flushType: !include resourceTypes/flushType.raml
+  - bulkType: !include resourceTypes/bulkType.raml
+  - cacheClearType: !include resourceTypes/cacheClearType.raml
+  - searchType: !include resourceTypes/searchType.raml
+  - refreshType: !include resourceTypes/refreshType.raml
+  - optimizeType: !include resourceTypes/optimizeType.raml
+  - mgetType: !include resourceTypes/mgetType.raml
+  - analizerType: !include resourceTypes/analizerType.raml
+  - base: !include resourceTypes/base.raml
+  - segmentsType: !include resourceTypes/segmentsType.raml
+  - multiTermVectors: !include resourceTypes/multiTermVectors.raml
+  - mappingType: !include resourceTypes/mappingType.raml
+  - validateType: !include resourceTypes/validateType.raml
+  - indexSettingsType: !include resourceTypes/indexSettingsType.raml
+  - warmerType: !include resourceTypes/warmerType.raml
+  - countType: !include resourceTypes/countType.raml
+  - mpercolateType: !include resourceTypes/mpercolateType.raml
+traits:
+  - canDeleteSelected: !include traits/canDeleteSelected.raml
+  - creatingDocument: !include traits/creatingDocument.raml
+/{_index}: 
+  type: base
+  uriParameters: 
+    _index: 
+      displayName: _index
+      description: |
+        Most APIs that refer to an index parameter support execution across multiple indices, using simple test1,test2,test3 notation (or _all for all indices). 
+        It also support wildcards, for example: test*, 
+        and the ability to "add" (+) and "remove" (-), for example: +test*,-test3.
+      required: true
+  post: 
+    description: The index operation automatically creates an index if it has not been created before (check out the create index API for manually creating an index), and also automatically creates a dynamic type mapping for the specific type if one has not yet been created (check out the put mapping API for manually creating a type mapping).
+    body: 
+      application/json: 
+        schema: createIndexReq
+        example: !include examples/createIndexReq-example.json
+    responses: 
+      200: 
+        body: 
+          application/json: 
+            schema: createIndex
+            example: !include examples/createIndex-example.json
+  put: 
+    description: The create index API allows to instantiate an index. Elasticsearch provides support for multiple indices, including executing operations across several indices.
+    body: 
+      application/json: 
+        schema: createIndexReq
+        example: !include examples/createIndexReq-example.json
+    responses: 
+      200: 
+        body: 
+          application/json: 
+            schema: createIndex
+            example: !include examples/createIndex-example.json
+  delete: 
+    description: The delete index API allows to delete an existing index.
+  head: 
+    description: |
+      Used to check if the index (indices) exists or not. For example:
+      curl -XHEAD 'http://localhost:9200/twitter'
+      
+      The HTTP status code indicates if the index exists or not. A 404 means it does not exist, and 
+      200 
+      means it does.
+    responses: 
+      200: 
+      404: 
+  /{_type}: 
+    type: base
+    uriParameters: 
+      _type: 
+        displayName: _type
+        description: |
+          All search APIs can be applied across multiple types within an index, and across multiple indices with support for the multi index syntax.
+          We can also search within specific types: /http://localhost:9200/twitter/tweet,user/_search?q=user:kimchy'
+          Set it to _all in order to fetch the first document matching the id across all types.
+        required: true
+    post: 
+      is: [ creatingDocument ]
+      description: The index operation can be executed without specifying the id. In such a case, an id will be generated automatically. In addition, the op_type will automatically be set to create. Here is an example (note the POST used instead of PUT)
+      body: 
+        application/json: 
+          schema: insertsDocumentReq
+          example: !include examples/insertsDocumentReq-example.json
+      responses: 
+        201: 
+          body: 
+            application/json: 
+    get: 
+      description: Get all documents of the type.
+      body: 
+        application/json: 
+          schema: mgetIndexTypeReq
+          example: !include examples/mgetIndexTypeReq-example.json
+    head: 
+      description: Used to check if a type/types exists in an index/indices.The HTTP status code indicates if the type exists or not. A 404 means it does not exist, and  200  means it does.
+      responses: 
+        200: 
+        400: 
+    delete: 
+      description: Allow to delete a mapping (type) along with its data
+    /{id}: 
+      type: base
+      put: 
+        is: [ creatingDocument ]
+        description: The index API adds or updates a typed JSON document in a specific index, making it searchable.
+        queryParameters: 
+          op_type: 
+            description: 'The index operation also accepts an op_type that can be used to force a create operation, allowing for "put-if-absent" behavior. When create is used, the index operation will fail if a document by that id already exists in the index.'
+            example: create
+        body: 
+          application/json: 
+            example: !include examples/insertsDocumentReq-example.json
+        responses: 
+          200: 
+            body: 
+              application/json: 
+      get: 
+        description: The get API allows to get a typed JSON document from the index based on its id.
+        queryParameters: 
+          realtime: 
+            description: In order to disable realtime GET, one can either set realtime parameter to false, or globally default it to by setting the action.get.realtime to false in the node configuration.
+            type: boolean
+          fields: 
+            description: When getting a document, one can specify fields to fetch from it. They will, when possible, be fetched as stored fields (fields mapped as stored in the mapping).
+            example: title,content
+          _source: 
+            description: By default, the get operation returns the contents of the _source field unless you have used the fields parameter or if the _source field is disabled. You can turn off _source retrieval by using the _source parameter
+            example: "*.id,retweeted"
+          _source_include: 
+            description: If you only need one or two fields from the complete _source, you can use the _source_include & _source_exclude parameters to include or filter out that parts you need. This can be especially helpful with large documents where partial retrieval can save on network overhead. Both parameters take a comma separated list of fields or wildcard expressions
+            example: "*.id&_source_exclude=entities"
+          _source_exclude: 
+            description: If you only need one or two fields from the complete _source, you can use the _source_include & _source_exclude parameters to include or filter out that parts you need. This can be especially helpful with large documents where partial retrieval can save on network overhead. Both parameters take a comma separated list of fields or wildcard expressions.
+            example: "*.id&_source_exclude=entities"
+          routing: 
+            description: When indexing using the ability to control the routing, in order to get a document, the routing value should also be provided.
+            example: kimchy
+          preference: 
+            description: 'Controls a preference of which shard replicas to execute the get request on. By default, the operation is randomized between the shard replicas. A custom value will be used to guarantee that the same shards will be used for the same custom value. This can help with "jumping values" when hitting different shards in different refresh states. A sample value can be something like the web session id, or the user name.'
+            enum: [ _primary , _local ]
+          version: 
+            description: You can use the version parameter to retrieve the document only if its current version is equal to the specified one.
+            example: 111
+          version_type: 
+            description: This behavior is the same for all version types with the exception of version type FORCE which always retrieves the document.
+            enum: [ FORCE ]
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                schema: getDocument
+                example: !include examples/getDocument-example.json
+      head: 
+        description: The API also allows to check for the existence of a document using HEAD.
+        responses: 
+          200: 
+      delete: 
+        description: The delete API allows to delete a typed JSON document from a specific index based on its id.
+        queryParameters: 
+          version: 
+            description: Each document indexed is versioned. When deleting a document, the version can be specified to make sure the relevant document we are trying to delete is actually being deleted and it has not changed in the meantime. Every write operation executed on a document, deletes included, causes its version to be incremented.
+          parent: 
+            description: The parent parameter can be set, which will basically be the same as setting the routing parameter. Note that deleting a parent document does not automatically delete its children. One way of deleting all child documents given a parent id is to perform a delete by query on the child index with the automatically generated (and indexed) field _parent, which is in the format parent_type#parent_id.
+          replication: 
+            description: he replication of the operation can be done in an asynchronous manner to the replicas (the operation will return once it has be executed on the primary shard). The replication parameter can be set to async (defaults to sync) in order to enable it.
+            enum: [ async ]
+          consistency: 
+            description: Control if the operation will be allowed to execute based on the number of active shards within that partition (replication group). The values allowed are one, quorum, and all. The parameter to set it is consistency, and it defaults to the node level setting of action.write_consistency which in turn defaults to quorum.
+            enum: 
+              - quorum
+              - one
+              - all
+          refresh: 
+            description: The refresh parameter can be set to true in order to refresh the relevant shard after the delete operation has occurred and make it searchable. Setting it to true should be done after careful thought and verification that this does not cause a heavy load on the system (and slows down indexing).
+            type: boolean
+          timeout: 
+            description: The primary shard assigned to perform the delete operation might not be available when the delete operation is executed. Some reasons for this might be that the primary shard is currently recovering from a gateway or undergoing relocation. By default, the delete operation will wait on the primary shard to become available for up to 1 minute before failing and responding with an error. The timeout parameter can be used to explicitly specify how long it waits.
+            example: 5m
+        responses: 
+          200: 
+            body: 
+              application/json: 
+                schema: deleteDocument
+                example: !include examples/deleteDocument-example.json
+      /_create: 
+        type: base
+        put: 
+          is: [ creatingDocument ]
+          description: Here is an example of using option to specify create.
+      /_source: 
+        type: base
+        get: 
+          description: Use the endpoint to get just the _source field of the document, without any additional content around it.
+          responses: 
+            200: 
+              body: 
+                application/json: 
+        head: 
+          description: Note, there is also a HEAD variant for the _source endpoint to efficiently test for document existence.
+          responses: 
+            200: 
+      /_update: 
+        type: base
+        post: 
+          description: 'The update API allows to update a document based on a script provided. The operation gets the document (collocated with the shard) from the index, runs the script (with optional script language and parameters), and index back the result (also allows to delete, or ignore the operation). It uses versioning to make sure no updates have happened during the "get" and "reindex".'
+          queryParameters: 
+            version: 
+              description: Each indexed document is given a version number. The associated version number is returned as part of the response to the index API request. The index API optionally allows for optimistic concurrency control when the version parameter is specified. This will control the version of the document the operation is intended to be executed against. A good example of a use case for versioning is performing a transactional read-then-update. Specifying a version from the document initially read ensures no changes have happened in the meantime (when reading in order to update, it is recommended to set preference to _primary).
+              example: version=2
+            version_type: 
+              description: Next to the internal & external version types explained above, Elasticsearch also supports other types for specific use cases. Here is an overview of the different version types and their semantics.
+              enum: 
+                - external_gt
+                - external
+                - force
+                - internal
+                - external_gte
+            routing: 
+              description: By default, shard placement  id value. For more explicit control, the value fed into the hash function used by the router can be directly specified on a per-operation basis using the routing parameter.
+              example: kimchy
+            parent: 
+              description: A child document can be indexed by specifying its parent when indexing
+              example: 1111
+            consistency: 
+              description: 'To prevent writes from taking place on the "wrong" side of a network partition, by default, index operations only succeed if a quorum (>replicas/2+1) of active shards are available. This default can be overridden on a node-by-node basis using the action.write_consistency setting. To alter this behavior per-operation, the consistency request parameter can be used.'
+              enum: 
+                - quorum
+                - one
+                - all
+            replication: 
+              description: By default, the index operation only returns after all shards within the replication group have indexed the document (sync replication). To enable asynchronous replication, causing the replication process to take place in the background, set the replication parameter to async. When asynchronous replication is used, the index operation will return as soon as the operation succeeds on the primary shard.
+              enum: [ async ]
+            refresh: 
+              description: To refresh the index immediately after the operation occurs, so that the document appears in search results immediately, the refresh parameter can be set to true. Setting this option to true should ONLY be done after careful thought and verification that it does not lead to poor performance, both from an indexing and a search standpoint. Note, getting a document using the get API is completely realtime.
+              type: boolean
+            timeout: 
+              description: The primary shard assigned to perform the index operation might not be available when the index operation is executed. Some reasons for this might be that the primary shard is currently recovering from a gateway or undergoing relocation. By default, the index operation will wait on the primary shard to become available for up to 1 minute before failing and responding with an error. The timeout parameter can be used to explicitly specify how long it waits.
+              example: 5m
+            fields: 
+              description: When getting a document, one can specify fields to fetch from it. They will, when possible, be fetched as stored fields (fields mapped as stored in the mapping).
+              example: title,content
+            retry_on_conflict: 
+              description: support retry_on_conflict which controls how many times to retry if there is a version conflict between getting the document and indexing / deleting it.
+              default: 0
+          body: 
+            application/json: 
+              schema: updateDocumentReq
+              example: !include examples/updateDocumentReq-example.json
+      /_mlt: 
+        type: base
+        description: |
+          The API simply results in executing a search request with moreLikeThis query (http parameters match the parameters to the more_like_this query). This means that the body of the request can 
+          optionally include all the request body options in the search API (aggs, from/to and so on). Internally, the more like this API is equivalent to performing a boolean query of more_like_this_field queries, with one query per specified 
+          mlt_fields.
+          
+          Rest parameters relating to search are also allowed, including search_type, 
+          search_indices, 
+          search_types, 
+          search_scroll, 
+          search_size and 
+          search_from.
+          
+          When no mlt_fields are specified, all the fields of the document will be used in the 
+          more_like_this query generated.
+          
+          By default, the queried document is excluded from the response (include set to false).
+          
+          Note: In order to use the mlt feature a 
+          mlt_field needs to be either be 
+          stored, store 
+          term_vector or 
+          source needs to be enabled.
+        get: 
+          description: |
+            The more like this (mlt) API allows to get documents that are "like" a specified document.
+          queryParameters: 
+            mlt_fields: 
+              description: fields of the document will be used in the more_like_this query generated.
+            min_doc_freq: 
+              type: number
+            include: 
+              type: boolean
+              default: false
+          responses: 
+            200: 
+              body: 
+                application/json: 
+      /_percolate: 
+        type: base
+        description: ""
+        get: 
+          description: Percolating an existing document
+          responses: 
+            200: 
+              body: 
+                application/json: 
+      /_explain: 
+        type: base
+        description: ""
+        get: 
+          description: |
+            The explain api computes a score explanation for a query and a specific document. This can give useful feedback whether a document matches or didn't match a specific query.
+            The index and type parameters expect a single index and a single type respectively.
+          body: 
+            application/json: 
+              schema: explainReq
+              example: !include examples/explainReq-example.json
+          responses: 
+            200: 
+              body: 
+                application/json: 
+      /_termvector: 
+        type: base
+        description: ""
+        get: 
+          description: Returns information and statistics on terms in the fields of a particular document as stored in the index.
+          queryParameters: 
+            fields: 
+              description: Optionally, you can specify the fields for which the information is retrieved either with a parameter in the url
+          body: 
+            application/json: 
+              schema: termVectorSettings
+              example: !include examples/termVectorSettings-example.json
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  schema: termVectors
+                  example: !include examples/termVectors-example.json
+    /_bulk: 
+      type: bulkType
+      post: 
+        description: The bulk API makes it possible to perform many index/delete operations in a single API call. This can greatly increase the indexing speed.
+    /_query: 
+      type: base
+      delete: 
+        is: [ canDeleteSelected ]
+        description: The delete by query API allows to delete documents from one or more indices and one or more types based on a query. The query can either be provided using a simple query string as a parameter, or using the Query DSL defined within the request body.
+    /_search: 
+      type: searchType
+      get: 
+        description: Search documents
+    /_count: 
+      type: countType
+    /_mapping: 
+      type: mappingType
+      description: ""
+      put: 
+        description: The put mapping API allows to register specific mapping definition for a specific type.
+        body: 
+          application/json: 
+            schema: mappingSample
+            example: !include examples/mappingSample-example.json
+      delete: 
+        description: Allow to delete a mapping (type) along with its data
+      /field/{fields}: 
+        type: mappingType
+        get: 
+          queryParameters: 
+            include_defaults: 
+              description: adding include_defaults=true to the query string will cause the response to include default values, which are normally suppressed.
+              type: boolean
+              example: true
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  schema: mappingFields
+                  example: !include examples/mappingFields-example.json
+    /_warmer/{warmer}: 
+      type: warmerType
+      put: 
+      get: 
+    /_warmers/{warmer}: 
+      type: warmerType
+    /_mtermvectors: 
+      type: multiTermVectors
+    /_mget: 
+      type: mgetType
+    /_validate/query: 
+      type: validateType
+    /_percolate: 
+      type: base
+      get: 
+        description: |
+          Traditionally you design documents based on your data and store them into an index and then define queries via the search api in order to retrieve these documents. The percolator works in the opposite direction, first you store queries into an index and then via the percolate api you define documents in order to retrieve these queries.
+          
+          The reason that queries can be stored comes from the fact that in Elasticsearch both documents and queries are defined in JSON. This allows you to embed queries into documents via the index api. Elasticsearch can extract the query from a document and make it available to the percolate api. Since documents are also defined as json, you can define a document in a request to the percolate api.
+          
+          The percolator and most of its features work in realtime, so once a percolate query is indexed it can immediately be used in the percolate api.
+        body: 
+          application/json: 
+        responses: 
+          200: 
+      /count: 
+        description: "The count percolate api, only keeps track of the number of matches and doesn't keep track of actual matches"
+        get: 
+          description: "The count percolate api, only keeps track of the number of matches and doesn't keep track of the actual matches."
+          responses: 
+            200: 
+              body: 
+                application/json: 
+                  schema: percolateCountResponse
+                  example: !include examples/percolateCountResponse-example.json
+    /_mpercolate: 
+      type: mpercolateType
+    /_msearch: 
+      type: msearchType
+  /_bulk: 
+    type: bulkType
+    post: 
+      description: The bulk API makes it possible to perform many index/delete operations in a single API call. This can greatly increase the indexing speed.
+  /_query: 
+    type: base
+    delete: 
+      is: [ canDeleteSelected ]
+      description: The delete by query API allows to delete documents from one or more indices and one or more types based on a query. The query can either be provided using a simple query string as a parameter, or using the Query DSL defined within the request body.
+  /.percolator: 
+    type: base
+    description: |
+      Traditionally you design documents based on your data and store them into an index and then define queries via the search api in order to retrieve these documents. The percolator works in the opposite direction, first you store queries into an index and then via the percolate api you define documents in order to retrieve these queries.
+      
+      The reason that queries can be stored comes from the fact that in Elasticsearch both documents and queries are defined in JSON. This allows you to embed queries into documents via the index api. Elasticsearch can extract the query from a document and make it available to the percolate api. Since documents are also defined as json, you can define a document in a request to the percolate api.
+      
+      The percolator and most of its features work in realtime, so once a percolate query is indexed it can immediately be used in the percolate api.
+    put: 
+      description: Adding a query to the percolator.
+      body: 
+        application/json: 
+    get: 
+      description: returns percolator
+      responses: 
+        200: 
+          body: 
+            application/json: 
+    delete: 
+      description: In order to un-register a percolate query the delete api can be used. So if the previous added query needs to be deleted the following delete requests needs to be executed
+      responses: 
+        200: 
+  /_search_shards: 
+    type: base
+    description: The search shards api returns the indices and shards that a search request would be executed against. This can give useful feedback for working out issues or planning optimizations with routing and shard preferences
+    get: 
+      responses: 
+        200: 
+          description: ""
+          body: 
+            application/json: 
+              schema: searchShardsResponse
+              example: !include examples/searchShardsResponse-example.json
+  /_search: 
+    type: searchType
+  /_count: 
+    type: countType
+  /_open: 
+    type: base
+    description: The open and close index APIs allow to close an index, and later on opening it. A closed index has almost no overhead on the cluster (except for maintaining its metadata), and is blocked for read/write operations. A closed index can be opened which will then go through the normal recovery process.
+    post: 
+  /_close: 
+    type: base
+    description: The open and close index APIs allow to close an index, and later on opening it. A closed index has almost no overhead on the cluster (except for maintaining its metadata), and is blocked for read/write operations. A closed index can be opened which will then go through the normal recovery process.
+    post: 
+  /_mapping: 
+    type: mappingType
+    get: 
+    /{types}: 
+      type: mappingType
+      get: 
+        description: Allow to delete a mapping (type) along with its data.
+      delete: 
+      put: 
+      /{fields}: 
+        type: mappingType
+        get: 
+  /_alias/{aliasName}: 
+    type: base
+    get: 
+      description: The get index alias api allows to filter by alias name and index name. This api redirects to the master and fetches the requested index aliases, if available. This api only serialises the found index aliases.
+      responses: 
+        200: 
+          body: 
+            application/json: 
+              schema: aliases
+              example: !include examples/aliases-example.json
+    put: 
+      description: An alias can also be added to index with this endpoint
+      queryParameters: 
+        routing: 
+          description: An optional routing that can be associated with an alias.
+        filter: 
+          description: An optional filter that can be associated with an alias.
+    delete: 
+      description: deletes alias with a given name
+  /_settings: 
+    type: indexSettingsType
+  /_analyze: 
+    type: analizerType
+  /_warmer/{warmerName}: 
+    type: warmerType
+    put: 
+    get: 
+  /_warmers/{warmerName}: 
+    type: warmerType
+    put: 
+    get: 
+  /_status: 
+    type: base
+    description: The indices status API allows to get a comprehensive status information of one or more indices.
+    get: 
+      responses: 
+        200: 
+          body: 
+            application/json: 
+  /_stats: 
+    type: base
+    description: Indices level stats provide statistics on different operations happening on an index. The API provides statistics on the index level scope (though most stats can also be retrieved using node level scope).
+    get: 
+    /{statSpec}: 
+      uriParameters: 
+        statSpec: 
+          displayName: statSpec
+          required: true
+          enum: 
+            - warmer
+            - flush
+            - get
+            - store
+            - search
+            - docs
+            - indexing
+            - merge
+            - fielddata
+            - suggest
+            - completion
+            - refresh
+      get: 
+        responses: 
+          200: 
+            body: 
+              application/json: 
+  /_segments: 
+    type: segmentsType
+  /_recovery: 
+    type: recoveryType
+  /_cache/clear: 
+    type: cacheClearType
+  /_flush: 
+    type: flushType
+  /_refresh: 
+    type: refreshType
+  /_optimize: 
+    type: optimizeType
+  /_mtermvectors: 
+    type: multiTermVectors
+  /_mget: 
+    type: mgetType
+  /_validate/query: 
+    type: validateType
+  /_mpercolate: 
+    type: mpercolateType
+  /_msearch: 
+    type: msearchType
+/_mget: 
+  type: mgetType
+/_bulk: 
+  type: bulkType
+  post: 
+/_nodes: 
+  get: 
+    description: The cluster nodes info API allows to retrieve one or more (or all) of the cluster nodes information.
+    responses: 
+      200: 
+        body: 
+          application/json: 
+            schema: nodes
+            example: !include examples/nodes-example.json
+  /{nodesIds}/hot_threads: 
+    type: base
+    get: 
+      queryParameters: 
+        threads: 
+          description: number of hot threads to provide, defaults to 3.
+          type: number
+        interval: 
+          description: the interval to do the second sampling of threads. Defaults to 500ms
+        type: 
+          description: The type to sample, defaults to cpu, but supports wait and block to see hot threads that are in wait or block state.
+      responses: 
+        200: 
+          body: 
+            text/plain: 
+  /stats: 
+    type: base
+    get: 
+  /hot_threads: 
+    type: base
+    get: 
+      queryParameters: 
+        threads: 
+          description: number of hot threads to provide, defaults to 3.
+          type: number
+        interval: 
+          description: the interval to do the second sampling of threads. Defaults to 500ms.
+        type: 
+          description: The type to sample, defaults to cpu, but supports wait and block to see hot threads that are in wait or block state.
+      responses: 
+        200: 
+          body: 
+            text/plain: 
+  /{nodeIds}/stats{statSpec}: 
+    type: base
+    get: 
+      description: |
+        By default, all stats are returned. You can limit this by combining any of indices, 
+        os, 
+        process, 
+        jvm, 
+        network, 
+        transport, 
+        http, 
+        fs, 
+        breaker and 
+        thread_pool. For example:
+        indices   
+         Indices stats about size, document count, indexing and deletion times, search times, field cache size , merges and flushes 
+        
+        fs   
+         File system information, data path, free disk space, read/write stats 
+        
+        http   
+         HTTP connection information 
+        
+        jvm   
+         JVM stats, memory pool information, garbage collection, buffer pools 
+        
+        network   
+         TCP information 
+        
+        os   
+         Operating system stats, load average, cpu, mem, swap 
+        
+        process   
+         Process statistics, memory consumption, cpu usage, open file descriptors 
+        
+        thread_pool   
+         Statistics about each thread pool, including current size, queue and rejected tasks 
+        
+        transport   
+         Transport statistics about sent and received bytes in cluster communication 
+        
+        breaker   
+         Statistics about the field data circuit breaker
+      queryParameters: 
+        fields: 
+          description: You can get information about field data memory usage on node level or on index level.
+  /{nodeInfoSpec}: 
+    type: base
+    description: ""
+    get: 
+      description: The cluster nodes info API allows to retrieve one or more (or all) of the cluster nodes information.
+      responses: 
+        200: 
+          description: ""
+          body: 
+            application/json: 
+              schema: nodeInfoResult
+              example: !include examples/nodeInfoResult-example.json
+/_cluster: 
+  /pending_tasks: 
+    type: base
+    get: 
+      description: The pending cluster tasks API returns a list of any cluster-level changes (e.g. create index, update mapping, allocate or fail shard) which have not yet been executed.
+      responses: 
+        200: 
+          body: 
+            application/json: 
+              schema: tasksStatus
+              example: !include examples/tasksStatus-example.json
+  /stats: 
+    type: base
+    get: 
+      description: The Cluster Stats API allows to retrieve statistics from a cluster wide perspective. The API returns basic index metrics (shard numbers, store size, memory usage) and information about the current nodes that form the cluster (number, roles, os, jvm versions, memory usage, cpu and installed plugins).
+      responses: 
+        200: 
+          body: 
+            application/json: 
+              schema: stats
+              example: !include examples/stats-example.json
+  /state: 
+    type: base
+    description: ""
+    get: 
+      description: The cluster state API allows to get a comprehensive state information of the whole cluster.
+      responses: 
+        200: 
+          body: 
+            application/json: 
+    /{metrics}/{indices}: 
+      type: base
+      description: |
+        metrics can be a comma-separated list of
+        version - Shows the cluster state version. 
+        master_node - Shows the elected master_node part of the response 
+        nodes -  Shows the nodes part of the response 
+        routing_table  - Shows the routing_table part of the response. If you supply a comma separated list of 
+        indices, the returned output will only contain the indices listed. 
+        metadata - Shows the metadata part of the response. If you supply a comma separated list of indices, the 
+        returned output will only contain the indices listed. blocks   Shows the blocks part of the response
+      get: 
+        description: As the cluster state can grow (depending on the number of shards and indices, your mapping, templates), it is possible to filter the cluster state response specifying the parts in the URL.
+        responses: 
+          200: 
+            body: 
+              application/json: 
+  /settings: 
+    type: base
+    get: 
+      description: Cluster wide settings can be returned using
+      responses: 
+        200: 
+          body: 
+            application/json: 
+    put: 
+      description: Allows to update cluster wide specific settings. Settings updated can either be persistent (applied cross restarts) or transient (will not survive a full cluster restart).
+      body: 
+        application/json: 
+          schema: clusterSettings
+          example: !include examples/clusterSettings-example.json
+  /reroute: 
+    type: base
+    description: ""
+    post: 
+      description: |
+        The reroute command allows to explicitly execute a cluster reroute allocation command including specific commands. For example, a shard can be moved from one node to another explicitly, an allocation can be canceled, or an unassigned shard can be explicitly allocated on a specific node.
+        
+        An important aspect to remember is the fact that once when an allocation occurs, the cluster will aim at re-balancing its state back to an even state. For example, if the allocation includes moving a shard from node1 to 
+        node2, in an 
+        even state, then another shard will be moved from 
+        node2 to 
+        node1 to even things out.
+        
+        The cluster can be set to disable allocations, which means that only the explicitly allocations will be performed. Obviously, only once all commands has been applied, the cluster will aim to be re-balance its state.
+        
+        Another option is to run the commands in dry_run (as a URI flag, or in the request body). This will 
+        cause the commands to apply to the current cluster state, and return the resulting cluster after the commands (and re-balancing) has been applied.
+        
+        If the explain parameter is specified, a detailed explanation of why the commands could or could 
+        not be executed is returned.
+        
+        The commands supported are:
+        move 
+         Move a started shard from one node to another node. Accepts index and 
+        shard for index 
+        name and shard number, from_node for the node to move the shard 
+        from, and 
+        to_node for 
+        the node to move the shard to. 
+        cancel 
+         Cancel allocation of a shard (or recovery). Accepts index and 
+        shard for index name and 
+        shard number, and node for the node to cancel the shard allocation on. It also accepts 
+        allow_primary flag to explicitly specify that it is allowed to cancel allocation for a primary 
+        shard. 
+        allocate 
+         Allocate an unassigned shard to a node. Accepts the index and 
+        shard for index name and 
+        shard number, and node to allocate the shard to. It also accepts 
+        allow_primary flag to 
+        explicitly specify that it is allowed to explicitly allocate a primary shard (might result in data loss).
+      body: 
+        application/json: 
+          schema: rerouteSpec
+          example: !include examples/rerouteSpec-example.json
+  /health/{indicesList}: 
+    type: base
+    get: 
+      description: The cluster health API allows to get a very simple status on the health of the cluster.
+      queryParameters: 
+        pretty: 
+          type: boolean
+        wait_for_status: 
+          description: One of green, yellow or  red. Will wait (until the timeout provided) until the status of the cluster changes to the one provided or better, i.e. green >  yellow >  red. By default, will  not wait for any status.
+          enum: 
+            - red
+            - green
+            - yellow
+        timeout: 
+        level: 
+          description: |
+            Can be one of cluster, 
+            indices or 
+            shards. Controls the details level of the health 
+            information returned. Defaults to cluster.
+          enum: 
+            - shards
+            - cluster
+            - indices
+          default: cluster
+        wait_for_relocating_shards: 
+          description: |
+            A number controlling to how many relocating shards to wait for. Usually will be 0 to indicate 
+            to wait till all relocations have happened. Defaults to not wait.
+        wait_for_nodes: 
+          description: The request waits until the specified number N of nodes is available. It also accepts  >=N,  <=N,  >N and  <N. Alternatively, it is possible to use  ge(N),  le(N),  gt(N) and  lt(N) notation.
+      responses: 
+        200: 
+          body: 
+            application/json: 
+  /nodes/{nodeList}/_shutdown: 
+    post: 
+      description: The nodes shutdown API allows to shutdown one or more (or all) nodes in the cluster.
+      queryParameters: 
+        delay: 
+          description: By default, the shutdown will be executed after a 1 second delay (1s). The delay can be customized by setting the delay parameter in a time value format.
+          default: 1s
+          example: 10s
+/_cat: 
+  /nodes: 
+    type: catResource
+    get: 
+      description: The nodes command shows the cluster topology.
+  /health: 
+    type: catResource
+    get: 
+      description: health is a terse, one-line representation of the same information from /_cluster/health. It has one option ts to disable the timestamping.
+      queryParameters: 
+        ts: 
+          description: ts allows to disable the timestamping
+  /indices: 
+    type: catResource
+    get: 
+      description: The indices command provides a cross-section of each index. This information spans nodes.
+  /fielddata: 
+    type: catResource
+    get: 
+      description: fielddata shows information about currently loaded fielddata on a per-node basis.
+      queryParameters: 
+        fields: 
+          description: comma separated list of fields
+  /pending_tasks: 
+    type: catResource
+    get: 
+      description: pending_tasks provides the same information as the /_cluster/pending_tasks API in a convenient tabular format.
+  /allocation: 
+    type: catResource
+    get: 
+      description: allocation provides a snapshot of how shards have located around the cluster and the state of disk usage.
+  /thread_pool: 
+    type: catResource
+    get: 
+      description: The thread_pool command shows cluster wide thread pool statistics per node. By default the active, queue and rejected statistics are returned for the bulk, index and search thread pools.
+  /shards: 
+    type: catResource
+    get: 
+      description: |
+        The shards command is the detailed view of what nodes contain which shards. It will tell you if it's 
+        a primary or replica, the number of docs, the bytes it takes on disk, and the node where it's located.
+  /aliases: 
+    type: catResource
+    get: 
+      description: |
+        aliases shows information about currently configured aliases to indices including filter and 
+        routing infos.
+      queryParameters: 
+        v: 
+          description: Each of the commands accepts a query string parameter v to turn on verbose output.
+        help: 
+          description: Each of the commands accepts a query string parameter help which will output its available columns.
+        h: 
+          description: Each of the commands accepts a query string parameter h which forces only those columns to appear.
+          example: h=ip,port,heapPercent,name
+        bytes: 
+          description: "We'll use a byte-level resolution."
+          example: bytes=b
+  /recovery: 
+    type: catResource
+    get: 
+      description: The recovery command is a view of index shard recoveries, both on-going and previously completed. It is a more compact view of the JSON recovery API.
+  /plugins: 
+    type: catResource
+    get: 
+      description: The plugins command provides a view per node of running plugins. This information spans nodes.
+  /master: 
+    type: catResource
+    get: 
+      description: "master doesn't have any extra options. It simply displays the master's node ID, bound IP address, and node name."
+  /count/{indicesSelection}: 
+    type: catResource
+    get: 
+      description: count provides quick access to the document count of the entire cluster, or individual indices.
+/_bench: 
+  type: base
+  description: ""
+  put: 
+    description: The benchmark API provides a standard mechanism for submitting queries and measuring their performance relative to one another.
+    body: 
+      application/json: 
+        schema: benchSample
+        example: !include examples/benchSample-example.json
+    responses: 
+      200: 
+        body: 
+          application/json: 
+            schema: benchResponse
+            example: !include examples/benchResponse-example.json
+  get: 
+    description: View all active benchmarks.
+    responses: 
+      200: 
+        body: 
+          application/json: 
+            schema: benchResponse
+            example: !include examples/benchResponse-example.json
+  /abort/{benchName}: 
+    post: 
+      description: Abort a benchmark.
+      responses: 
+        200: 
+          body: 
+            application/json: 
+              schema: benchAbortResponse
+              example: !include examples/benchAbortResponse-example.json
+/_suggest: 
+  type: base
+  post: 
+    description: The suggest feature suggests similar looking terms based on a provided text by using a suggester. Parts of the suggest feature are still under development
+    body: 
+      application/json: 
+        schema: suggestExample
+        example: !include examples/suggestExample-example.json
+    responses: 
+      200: 
+        body: 
+          application/json: 
+            schema: suggestResponse
+            example: !include examples/suggestResponse-example.json
+/_mpercolate: 
+  type: mpercolateType
+/_search: 
+  type: searchType
+  /template: 
+    type: searchType
+    description: ""
+    get: 
+      description: |
+        The /_search/template endpoint allows to use the mustache language to pre render search 
+        requests, before they are executed and fill existing templates with template parameters.
+      body: 
+        application/json: 
+          schema: searchTemplate
+          example: !include examples/searchTemplate-example.json
+      responses: 
+        200: 
+          body: 
+            application/json: 
+/_mapping: 
+  type: mappingType
+  get: 
+  /{_index}: 
+    type: mappingType
+    get: 
+/_aliases: 
+  type: base
+  description: ""
+  post: 
+    description: APIs in elasticsearch accept an index name when working against a specific index, and several indices when applicable. The index aliases API allow to alias an index with a name, with all APIs automatically converting the alias name to the actual index name. An alias can also be mapped to more than one index, and when specifying it, the alias will automatically expand to the aliases indices. An alias can also be associated with a filter that will automatically be applied when searching, and routing values.
+    body: 
+      application/json: 
+        schema: aliasOps
+        example: !include examples/aliasOps-example.json
+    responses: 
+      201: 
+/_settings: 
+  type: indexSettingsType
+/_analyze: 
+  type: analizerType
+/_template/{templateId}: 
+  type: base
+  description: Index templates allow to define templates that will automatically be applied to new indices created. The templates include both settings and mappings, and a simple pattern template that controls if the template will be applied to the index created
+  put: 
+    description: Create index template
+    body: 
+      application/json: 
+        schema: indexTemplate
+        example: !include examples/indexTemplate-example.json
+    responses: 
+      200: 
+  delete: 
+    description: |
+      Index templates are identified by a name (in the above case template_1) and can be deleted as 
+      well
+  get: 
+    description: Return index template
+    responses: 
+      200: 
+        body: 
+          application/json: 
+            schema: indexTemplate
+            example: !include examples/indexTemplate-example.json
+/_warmer/{warmer_name}: 
+  type: warmerType
+  put: 
+/_warmers/{warmer_name}: 
+  type: warmerType
+  put: 
+/_status: 
+  type: base
+  description: ""
+  get: 
+    description: The indices status API allows to get a comprehensive status information of one or more indices.
+    responses: 
+      200: 
+        body: 
+          application/json: 
+/_stats: 
+  type: base
+  get: 
+    description: |
+      Indices level stats provide statistics on different operations happening on an index. The API provides statistics on the index level scope (though most stats can also be retrieved using node level scope).
+      
+      The following returns high level aggregation and index level stats for all indices
+    responses: 
+      200: 
+        body: 
+          application/json: 
+  /{statSpec}: 
+    type: base
+    get: 
+      description: Indices level stats provide statistics on different operations happening on an index.
+      responses: 
+        200: 
+          body: 
+            application/json: 
+/_segments: 
+  type: segmentsType
+/_recovery: 
+  type: recoveryType
+/_cache/clear: 
+  type: cacheClearType
+/_flush: 
+  type: flushType
+/_refresh: 
+  type: refreshType
+/_optimize: 
+  type: optimizeType
+/_mtermvectors: 
+  type: multiTermVectors
+  get: 
+    responses: 
+      200: 
+        body: 
+          application/json: 
+/_msearch: 
+  type: msearchType
+documentation: 
+  - title: Headline
+    content: !include docs/headline.md

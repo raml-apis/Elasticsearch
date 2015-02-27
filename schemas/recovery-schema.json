@@ -1,0 +1,174 @@
+{
+  "required" : true ,
+  "$schema" : "http://json-schema.org/draft-03/schema" ,
+  "type" : "object" ,
+  "properties" : {
+    "index1" : {
+      "type" : "object" ,
+      "required" : false ,
+      "properties" : {
+        "shards" : {
+          "type" : "array" ,
+          "required" : false ,
+          "items" : [
+            {
+              "type" : "object" ,
+              "properties" : {
+                "id" : {
+                  "type" : "number" ,
+                  "required" : false
+                } ,
+                "type" : {
+                  "type" : "string" ,
+                  "required" : false
+                } ,
+                "stage" : {
+                  "type" : "string" ,
+                  "required" : false
+                } ,
+                "primary" : {
+                  "type" : "boolean" ,
+                  "required" : false
+                } ,
+                "start_time" : {
+                  "type" : "string" ,
+                  "required" : false
+                } ,
+                "stop_time" : {
+                  "type" : "number" ,
+                  "required" : false
+                } ,
+                "total_time_in_millis" : {
+                  "type" : "number" ,
+                  "required" : false
+                } ,
+                "source" : {
+                  "type" : "object" ,
+                  "required" : false ,
+                  "properties" : {
+                    "repository" : {
+                      "type" : "string" ,
+                      "required" : false
+                    } ,
+                    "snapshot" : {
+                      "type" : "string" ,
+                      "required" : false
+                    } ,
+                    "index" : {
+                      "type" : "string" ,
+                      "required" : false
+                    }
+                  }
+                } ,
+                "target" : {
+                  "type" : "object" ,
+                  "required" : false ,
+                  "properties" : {
+                    "id" : {
+                      "type" : "string" ,
+                      "required" : false
+                    } ,
+                    "hostname" : {
+                      "type" : "string" ,
+                      "required" : false
+                    } ,
+                    "ip" : {
+                      "type" : "string" ,
+                      "required" : false
+                    } ,
+                    "name" : {
+                      "type" : "string" ,
+                      "required" : false
+                    }
+                  }
+                } ,
+                "index" : {
+                  "type" : "object" ,
+                  "required" : false ,
+                  "properties" : {
+                    "files" : {
+                      "type" : "object" ,
+                      "required" : false ,
+                      "properties" : {
+                        "total" : {
+                          "type" : "number" ,
+                          "required" : false
+                        } ,
+                        "reused" : {
+                          "type" : "number" ,
+                          "required" : false
+                        } ,
+                        "recovered" : {
+                          "type" : "number" ,
+                          "required" : false
+                        } ,
+                        "percent" : {
+                          "type" : "string" ,
+                          "required" : false
+                        }
+                      }
+                    } ,
+                    "bytes" : {
+                      "type" : "object" ,
+                      "required" : false ,
+                      "properties" : {
+                        "total" : {
+                          "type" : "number" ,
+                          "required" : false
+                        } ,
+                        "reused" : {
+                          "type" : "number" ,
+                          "required" : false
+                        } ,
+                        "recovered" : {
+                          "type" : "number" ,
+                          "required" : false
+                        } ,
+                        "percent" : {
+                          "type" : "string" ,
+                          "required" : false
+                        }
+                      }
+                    } ,
+                    "total_time_in_millis" : {
+                      "type" : "number" ,
+                      "required" : false
+                    }
+                  }
+                } ,
+                "translog" : {
+                  "type" : "object" ,
+                  "required" : false ,
+                  "properties" : {
+                    "recovered" : {
+                      "type" : "number" ,
+                      "required" : false
+                    } ,
+                    "total_time_in_millis" : {
+                      "type" : "number" ,
+                      "required" : false
+                    }
+                  }
+                } ,
+                "start" : {
+                  "type" : "object" ,
+                  "required" : false ,
+                  "properties" : {
+                    "check_index_time" : {
+                      "type" : "number" ,
+                      "required" : false
+                    } ,
+                    "total_time_in_millis" : {
+                      "type" : "number" ,
+                      "required" : false
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

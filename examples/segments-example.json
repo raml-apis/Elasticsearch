@@ -1,0 +1,13 @@
+{
+  "_3" : {
+    "generation" : 3 ,
+    "num_docs" : 1121 ,
+    "deleted_docs" : 53 ,
+    "size_in_bytes" : 228288 ,
+    "memory_in_bytes" : 3211 ,
+    "committed" : true ,
+    "search" : true ,
+    "version" : "4.6" ,
+    "compound" : true
+  }
+}

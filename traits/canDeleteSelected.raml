@@ -1,0 +1,29 @@
+queryParameters: 
+  q: 
+    required: true
+    example: "user:kimchy"
+  df: 
+    description: The default field to use when no field prefix is defined within the query.
+  analyzer: 
+    description: The analyzer name to be used when analyzing the query string.
+  default_operator: 
+    description: The default operator to be used
+    enum: [ AND , OR ]
+  replication: 
+    description: The replication of the operation can be done in an asynchronous manner to the replicas (the operation will return once it has be executed on the primary shard).
+    enum: [ async ]
+  consistency: 
+    enum: 
+      - quorum
+      - one
+      - all
+body: 
+  application/json: 
+    schema: countReq
+    example: !include ../examples/countReq-example.json
+responses: 
+  200: 
+    body: 
+      application/json: 
+        schema: query
+        example: !include ../examples/query-example.json

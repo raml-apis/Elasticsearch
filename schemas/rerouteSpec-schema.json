@@ -1,0 +1,62 @@
+{
+  "required" : true ,
+  "$schema" : "http://json-schema.org/draft-03/schema" ,
+  "type" : "object" ,
+  "properties" : {
+    "commands" : {
+      "type" : "array" ,
+      "required" : false ,
+      "items" : [
+        {
+          "type" : "object" ,
+          "properties" : {
+            "move" : {
+              "type" : "object" ,
+              "required" : false ,
+              "properties" : {
+                "index" : {
+                  "type" : "string" ,
+                  "required" : false
+                } ,
+                "shard" : {
+                  "type" : "number" ,
+                  "required" : false
+                } ,
+                "from_node" : {
+                  "type" : "string" ,
+                  "required" : false
+                } ,
+                "to_node" : {
+                  "type" : "string" ,
+                  "required" : false
+                }
+              }
+            }
+          }
+        } , {
+          "type" : "object" ,
+          "properties" : {
+            "allocate" : {
+              "type" : "object" ,
+              "required" : false ,
+              "properties" : {
+                "index" : {
+                  "type" : "string" ,
+                  "required" : false
+                } ,
+                "shard" : {
+                  "type" : "number" ,
+                  "required" : false
+                } ,
+                "node" : {
+                  "type" : "string" ,
+                  "required" : false
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

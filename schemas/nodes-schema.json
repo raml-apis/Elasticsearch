@@ -1,0 +1,94 @@
+{
+  "required" : true ,
+  "$schema" : "http://json-schema.org/draft-03/schema" ,
+  "type" : "object" ,
+  "properties" : {
+    "cluster_name" : {
+      "type" : "string" ,
+      "required" : false
+    } ,
+    "nodes" : {
+      "type" : "object" ,
+      "required" : false ,
+      "properties" : {
+        "hJLXmY_NTrCytiIMbX4_1g" : {
+          "type" : "object" ,
+          "required" : false ,
+          "properties" : {
+            "name" : {
+              "type" : "string" ,
+              "required" : false
+            } ,
+            "transport_address" : {
+              "type" : "string" ,
+              "required" : false
+            } ,
+            "hostname" : {
+              "type" : "string" ,
+              "required" : false
+            } ,
+            "version" : {
+              "type" : "string" ,
+              "required" : false
+            } ,
+            "http_address" : {
+              "type" : "string" ,
+              "required" : false
+            } ,
+            "plugins" : {
+              "type" : "array" ,
+              "required" : false ,
+              "items" : [
+                {
+                  "type" : "object" ,
+                  "properties" : {
+                    "name" : {
+                      "type" : "string" ,
+                      "required" : false
+                    } ,
+                    "description" : {
+                      "type" : "string" ,
+                      "required" : false
+                    } ,
+                    "site" : {
+                      "type" : "boolean" ,
+                      "required" : false
+                    } ,
+                    "jvm" : {
+                      "type" : "boolean" ,
+                      "required" : false
+                    }
+                  }
+                } , {
+                  "type" : "object" ,
+                  "properties" : {
+                    "name" : {
+                      "type" : "string" ,
+                      "required" : false
+                    } ,
+                    "description" : {
+                      "type" : "string" ,
+                      "required" : false
+                    } ,
+                    "url" : {
+                      "type" : "string" ,
+                      "required" : false
+                    } ,
+                    "site" : {
+                      "type" : "boolean" ,
+                      "required" : false
+                    } ,
+                    "jvm" : {
+                      "type" : "boolean" ,
+                      "required" : false
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "required" : true ,
+  "$schema" : "http://json-schema.org/draft-03/schema" ,
+  "type" : "object" ,
+  "properties" : {
+    "found" : {
+      "type" : "boolean" ,
+      "required" : false
+    } ,
+    "_index" : {
+      "type" : "string" ,
+      "required" : false
+    } ,
+    "_type" : {
+      "type" : "string" ,
+      "required" : false
+    } ,
+    "_id" : {
+      "type" : "string" ,
+      "required" : false
+    } ,
+    "_version" : {
+      "type" : "number" ,
+      "required" : false
+    }
+  }
+}

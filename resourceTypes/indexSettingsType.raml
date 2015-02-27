@@ -1,0 +1,15 @@
+type: base
+put: 
+  description: |
+    Allows to control the allocation of indices on nodes based on include/exclude filters. The filters can be set both on the index level and on the cluster level. Lets start with an example of setting it on the cluster level
+    We can create an index that will only deploy on nodes that have tag set to value1 and value2 by setting index.routing.allocation.include.tag to value1,value2.
+  body: 
+    application/json: 
+      schema: settingsPut
+      example: !include ../examples/settingsPut-example.json
+get: 
+  description: Retrieve settings of index/indices.
+  responses: 
+    200: 
+      body: 
+        application/json: 

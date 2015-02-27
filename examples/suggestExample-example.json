@@ -1,0 +1,8 @@
+{
+  "my-suggestion" : {
+    "text" : "the amsterdma meetpu" ,
+    "term" : {
+      "field" : "body"
+    }
+  }
+}

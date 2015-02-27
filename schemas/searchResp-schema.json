@@ -1,0 +1,76 @@
+{
+  "required" : true ,
+  "$schema" : "http://json-schema.org/draft-03/schema" ,
+  "type" : "object" ,
+  "properties" : {
+    "_shards" : {
+      "type" : "object" ,
+      "required" : false ,
+      "properties" : {
+        "total" : {
+          "type" : "number" ,
+          "required" : false
+        } ,
+        "successful" : {
+          "type" : "number" ,
+          "required" : false
+        } ,
+        "failed" : {
+          "type" : "number" ,
+          "required" : false
+        }
+      }
+    } ,
+    "hits" : {
+      "type" : "object" ,
+      "required" : false ,
+      "properties" : {
+        "total" : {
+          "type" : "number" ,
+          "required" : false
+        } ,
+        "hits" : {
+          "type" : "array" ,
+          "required" : false ,
+          "items" : [
+            {
+              "type" : "object" ,
+              "properties" : {
+                "_index" : {
+                  "type" : "string" ,
+                  "required" : false
+                } ,
+                "_type" : {
+                  "type" : "string" ,
+                  "required" : false
+                } ,
+                "_id" : {
+                  "type" : "string" ,
+                  "required" : false
+                } ,
+                "_source" : {
+                  "type" : "object" ,
+                  "required" : false ,
+                  "properties" : {
+                    "user" : {
+                      "type" : "string" ,
+                      "required" : false
+                    } ,
+                    "postDate" : {
+                      "type" : "string" ,
+                      "required" : false
+                    } ,
+                    "message" : {
+                      "type" : "string" ,
+                      "required" : false
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

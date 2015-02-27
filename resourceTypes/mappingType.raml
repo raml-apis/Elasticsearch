@@ -1,0 +1,22 @@
+put?: 
+  description: The put mapping API allows to register specific mapping definition for a specific type.
+  queryParameters: 
+    ignore_conflicts: 
+      description: When an existing mapping already exists under the given type, the two mapping definitions, the one already defined, and the new ones are merged. The ignore_conflicts parameters can be used to control if conflicts should be ignored or not, by default, it is set to false which means conflicts are not ignored.
+      type: boolean
+  responses: 
+    200: 
+      body: 
+        application/json: 
+get?: 
+  description: The get mapping API allows to retrieve mapping definitions for an index or index/type.
+  queryParameters: 
+    include_defaults: 
+      description: adding include_defaults=true to the query string will cause the response to include default values, which are normally suppressed.
+      type: boolean
+      example: true
+  responses: 
+    200: 
+      body: 
+        application/json: 
+type: base

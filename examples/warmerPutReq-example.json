@@ -1,0 +1,13 @@
+{
+  "query" : {
+    "match_all" : {
+    }
+  } ,
+  "aggs" : {
+    "aggs_1" : {
+      "terms" : {
+        "field" : "field"
+      }
+    }
+  }
+}

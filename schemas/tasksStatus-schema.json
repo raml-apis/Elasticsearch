@@ -1,0 +1,38 @@
+{
+  "required" : true ,
+  "$schema" : "http://json-schema.org/draft-03/schema" ,
+  "type" : "object" ,
+  "properties" : {
+    "tasks" : {
+      "type" : "array" ,
+      "required" : false ,
+      "items" : [
+        {
+          "type" : "object" ,
+          "properties" : {
+            "insert_order" : {
+              "type" : "number" ,
+              "required" : false
+            } ,
+            "priority" : {
+              "type" : "string" ,
+              "required" : false
+            } ,
+            "source" : {
+              "type" : "string" ,
+              "required" : false
+            } ,
+            "time_in_queue_millis" : {
+              "type" : "number" ,
+              "required" : false
+            } ,
+            "time_in_queue" : {
+              "type" : "string" ,
+              "required" : false
+            }
+          }
+        }
+      ]
+    }
+  }
+}

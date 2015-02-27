@@ -1,0 +1,10 @@
+{
+  "tweet" : {
+    "properties" : {
+      "message" : {
+        "type" : "string" ,
+        "store" : true
+      }
+    }
+  }
+}

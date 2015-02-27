@@ -1,0 +1,36 @@
+{
+  "required" : true ,
+  "$schema" : "http://json-schema.org/draft-03/schema" ,
+  "type" : "object" ,
+  "properties" : {
+    "nodes" : {
+      "type" : "object" ,
+      "required" : false ,
+      "properties" : {
+        "JklnKbD7Tyqi9TP3_Q_tBg" : {
+          "type" : "object" ,
+          "required" : false ,
+          "properties" : {
+            "name" : {
+              "type" : "string" ,
+              "required" : false
+            } ,
+            "transport_address" : {
+              "type" : "string" ,
+              "required" : false
+            }
+          }
+        }
+      }
+    } ,
+    "shards" : {
+      "type" : "array" ,
+      "required" : false ,
+      "items" : [
+        {
+          "type" : "array"
+        }
+      ]
+    }
+  }
+}

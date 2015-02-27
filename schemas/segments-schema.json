@@ -1,0 +1,91 @@
+{
+  "required" : true ,
+  "$schema" : "http://json-schema.org/draft-03/schema" ,
+  "type" : "object" ,
+  "properties" : {
+    "_3" : {
+      "type" : "object" ,
+      "required" : false ,
+      "properties" : {
+        "generation" : {
+          "type" : "number" ,
+          "required" : false
+        } ,
+        "num_docs" : {
+          "type" : "number" ,
+          "required" : false
+        } ,
+        "deleted_docs" : {
+          "type" : "number" ,
+          "required" : false
+        } ,
+        "size_in_bytes" : {
+          "type" : "number" ,
+          "required" : false
+        } ,
+        "memory_in_bytes" : {
+          "type" : "number" ,
+          "required" : false
+        } ,
+        "committed" : {
+          "type" : "boolean" ,
+          "required" : false
+        } ,
+        "search" : {
+          "type" : "boolean" ,
+          "required" : false
+        } ,
+        "version" : {
+          "type" : "string" ,
+          "required" : false
+        } ,
+        "compound" : {
+          "type" : "boolean" ,
+          "required" : false
+        }
+      }
+    } ,
+    "_4" : {
+      "type" : "object" ,
+      "required" : false ,
+      "properties" : {
+        "generation" : {
+          "type" : "number" ,
+          "required" : false
+        } ,
+        "num_docs" : {
+          "type" : "number" ,
+          "required" : false
+        } ,
+        "deleted_docs" : {
+          "type" : "number" ,
+          "required" : false
+        } ,
+        "size_in_bytes" : {
+          "type" : "number" ,
+          "required" : false
+        } ,
+        "memory_in_bytes" : {
+          "type" : "number" ,
+          "required" : false
+        } ,
+        "committed" : {
+          "type" : "boolean" ,
+          "required" : false
+        } ,
+        "search" : {
+          "type" : "boolean" ,
+          "required" : false
+        } ,
+        "version" : {
+          "type" : "string" ,
+          "required" : false
+        } ,
+        "compound" : {
+          "type" : "boolean" ,
+          "required" : false
+        }
+      }
+    }
+  }
+}

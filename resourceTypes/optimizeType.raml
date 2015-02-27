@@ -1,0 +1,18 @@
+type: base
+post: 
+  description: The optimize API allows to optimize one or more indices through an API. The optimize process basically optimizes the index for faster search operations (and relates to the number of segments a Lucene index holds within each shard). The optimize operation allows to reduce the number of segments by merging them.
+  queryParameters: 
+    max_num_segments: 
+      description: The number of segments to optimize to. To fully optimize the index, set it to 1. Defaults to simply checking if a merge needs to execute, and if so, executes it.
+    only_expunge_deletes: 
+      description: "Should the optimize process only expunge segments with deletes in it. In Lucene, a document is not deleted from a segment, just marked as deleted. During a merge process of segments, a new segment is created that does not have those deletes. This flag allows to only merge segments that have deletes. Defaults to false. Note that this won't override the index.merge.policy.expunge_deletes_allowed threshold."
+    flush: 
+      description: Should a flush be performed after the optimize. Defaults to true.
+      type: boolean
+      default: true
+    wait_for_merge: 
+      description: Should the request wait for the merge to end. Defaults to true. Note, a merge can potentially be a very heavy operation, so it might make sense to run it set to false.
+      type: boolean
+      default: true
+    force: 
+      description: Force a merge operation, even if there is a single segment in the shard with no deletions. [1.1.0]

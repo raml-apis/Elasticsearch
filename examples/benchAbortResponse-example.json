@@ -1,0 +1,9 @@
+{
+  "aborted_benchmarks" : [
+    {
+      "node" : "localhost" ,
+      "benchmark_name" : "my_benchmark" ,
+      "aborted" : true
+    }
+  ]
+}

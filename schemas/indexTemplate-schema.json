@@ -1,0 +1,61 @@
+{
+  "required" : true ,
+  "$schema" : "http://json-schema.org/draft-03/schema" ,
+  "type" : "object" ,
+  "properties" : {
+    "template" : {
+      "type" : "string" ,
+      "required" : false
+    } ,
+    "settings" : {
+      "type" : "object" ,
+      "required" : false ,
+      "properties" : {
+        "number_of_shards" : {
+          "type" : "number" ,
+          "required" : false
+        }
+      }
+    } ,
+    "aliases" : {
+      "type" : "object" ,
+      "required" : false ,
+      "properties" : {
+        "alias1" : {
+          "type" : "object" ,
+          "required" : false
+        } ,
+        "alias2" : {
+          "type" : "object" ,
+          "required" : false ,
+          "properties" : {
+            "filter" : {
+              "type" : "object" ,
+              "required" : false ,
+              "properties" : {
+                "term" : {
+                  "type" : "object" ,
+                  "required" : false ,
+                  "properties" : {
+                    "user" : {
+                      "type" : "string" ,
+                      "required" : false
+                    }
+                  }
+                }
+              }
+            } ,
+            "routing" : {
+              "type" : "string" ,
+              "required" : false
+            }
+          }
+        } ,
+        "{index}-alias" : {
+          "type" : "object" ,
+          "required" : false
+        }
+      }
+    }
+  }
+}

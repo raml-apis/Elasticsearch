@@ -1,0 +1,13 @@
+{
+  "docs" : [
+    {
+      "_index" : "test" ,
+      "_type" : "type" ,
+      "_id" : "1"
+    } , {
+      "_index" : "test" ,
+      "_type" : "type" ,
+      "_id" : "2"
+    }
+  ]
+}

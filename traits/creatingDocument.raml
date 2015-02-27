@@ -1,0 +1,50 @@
+description: Here is an example of using option to specify create.
+queryParameters: 
+  version: 
+    description: Each indexed document is given a version number. The associated version number is returned as part of the response to the index API request. The index API optionally allows for optimistic concurrency control when the version parameter is specified. This will control the version of the document the operation is intended to be executed against. A good example of a use case for versioning is performing a transactional read-then-update. Specifying a version from the document initially read ensures no changes have happened in the meantime (when reading in order to update, it is recommended to set preference to _primary).
+    example: version=2
+  version_type: 
+    description: Next to the internal & external version types explained above, Elasticsearch also supports other types for specific use cases. Here is an overview of the different version types and their semantics.
+    enum: 
+      - external_gt
+      - external
+      - force
+      - internal
+      - external_gte
+  routing: 
+    description: "By default, shard placement's id value. For more explicit control, the value fed into the hash function used by the router can be directly specified on a per-operation basis using the routing parameter."
+    example: kimchy
+  parent: 
+    description: A child document can be indexed by specifying its parent when indexing
+    example: 1111
+  timestamp: 
+    description: A document can be indexed with a timestamp associated with it. The timestamp value of a document can be set using the timestamp parameter.
+    example: 2009-11-15T14%3A12%3A12
+  ttl: 
+    description: A document can be indexed with a ttl (time to live) associated with it. Expired documents will be expunged automatically. The expiration date that will be set for a document with a provided ttl is relative to the timestamp of the document, meaning it can be based on the time of indexing or on any time provided. The provided ttl must be strictly positive and can be a number (in milliseconds) or any valid time value
+    example: 86400000
+  consistency: 
+    description: 'To prevent writes from taking place on the "wrong" side of a network partition, by default, index operations only succeed if a quorum (>replicas/2+1) of active shards are available. This default can be overridden on a node-by-node basis using the action.write_consistency setting. To alter this behavior per-operation, the consistency request parameter can be used.'
+    enum: 
+      - quorum
+      - one
+      - all
+  replication: 
+    description: By default, the index operation only returns after all shards within the replication group have indexed the document (sync replication). To enable asynchronous replication, causing the replication process to take place in the background, set the replication parameter to async. When asynchronous replication is used, the index operation will return as soon as the operation succeeds on the primary shard.
+    enum: [ async ]
+  refresh: 
+    description: To refresh the index immediately after the operation occurs, so that the document appears in search results immediately, the refresh parameter can be set to true. Setting this option to true should ONLY be done after careful thought and verification that it does not lead to poor performance, both from an indexing and a search standpoint. Note, getting a document using the get API is completely realtime.
+    type: boolean
+  timeout: 
+    description: The primary shard assigned to perform the index operation might not be available when the index operation is executed. Some reasons for this might be that the primary shard is currently recovering from a gateway or undergoing relocation. By default, the index operation will wait on the primary shard to become available for up to 1 minute before failing and responding with an error. The timeout parameter can be used to explicitly specify how long it waits.
+    example: 5m
+body: 
+  application/json: 
+    schema: insertsDocumentReq
+    example: !include ../examples/insertsDocumentReq-example.json
+responses: 
+  200: 
+    body: 
+      application/json: 
+        schema: insertsDocument
+        example: !include ../examples/insertsDocument-example.json

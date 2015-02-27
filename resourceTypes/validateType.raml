@@ -1,0 +1,9 @@
+type: base
+get: 
+  description: The validate API allows a user to validate a potentially expensive query without executing it.
+  responses: 
+    200: 
+      body: 
+        application/json: 
+          schema: valid
+          example: !include ../examples/valid-example.json

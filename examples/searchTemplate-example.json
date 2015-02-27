@@ -1,0 +1,12 @@
+{
+  "template" : {
+    "query" : {
+      "match" : {
+        "title" : "{{query_string}}"
+      }
+    }
+  } ,
+  "params" : {
+    "query_string" : "search for these words"
+  }
+}

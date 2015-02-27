@@ -1,0 +1,14 @@
+{
+  "twitter" : {
+    "tweet" : {
+      "text" : {
+        "full_name" : "text" ,
+        "mapping" : {
+          "text" : {
+            "type" : "string"
+          }
+        }
+      }
+    }
+  }
+}

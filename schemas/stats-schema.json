@@ -1,0 +1,527 @@
+{
+  "required" : true ,
+  "$schema" : "http://json-schema.org/draft-03/schema" ,
+  "type" : "object" ,
+  "properties" : {
+    "cluster_name" : {
+      "type" : "string" ,
+      "required" : false
+    } ,
+    "status" : {
+      "type" : "string" ,
+      "required" : false
+    } ,
+    "indices" : {
+      "type" : "object" ,
+      "required" : false ,
+      "properties" : {
+        "count" : {
+          "type" : "number" ,
+          "required" : false
+        } ,
+        "shards" : {
+          "type" : "object" ,
+          "required" : false ,
+          "properties" : {
+            "total" : {
+              "type" : "number" ,
+              "required" : false
+            } ,
+            "primaries" : {
+              "type" : "number" ,
+              "required" : false
+            } ,
+            "replication" : {
+              "type" : "number" ,
+              "required" : false
+            } ,
+            "index" : {
+              "type" : "object" ,
+              "required" : false ,
+              "properties" : {
+                "shards" : {
+                  "type" : "object" ,
+                  "required" : false ,
+                  "properties" : {
+                    "min" : {
+                      "type" : "number" ,
+                      "required" : false
+                    } ,
+                    "max" : {
+                      "type" : "number" ,
+                      "required" : false
+                    } ,
+                    "avg" : {
+                      "type" : "number" ,
+                      "required" : false
+                    }
+                  }
+                } ,
+                "primaries" : {
+                  "type" : "object" ,
+                  "required" : false ,
+                  "properties" : {
+                    "min" : {
+                      "type" : "number" ,
+                      "required" : false
+                    } ,
+                    "max" : {
+                      "type" : "number" ,
+                      "required" : false
+                    } ,
+                    "avg" : {
+                      "type" : "number" ,
+                      "required" : false
+                    }
+                  }
+                } ,
+                "replication" : {
+                  "type" : "object" ,
+                  "required" : false ,
+                  "properties" : {
+                    "min" : {
+                      "type" : "number" ,
+                      "required" : false
+                    } ,
+                    "max" : {
+                      "type" : "number" ,
+                      "required" : false
+                    } ,
+                    "avg" : {
+                      "type" : "number" ,
+                      "required" : false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        } ,
+        "docs" : {
+          "type" : "object" ,
+          "required" : false ,
+          "properties" : {
+            "count" : {
+              "type" : "number" ,
+              "required" : false
+            } ,
+            "deleted" : {
+              "type" : "number" ,
+              "required" : false
+            }
+          }
+        } ,
+        "store" : {
+          "type" : "object" ,
+          "required" : false ,
+          "properties" : {
+            "size" : {
+              "type" : "string" ,
+              "required" : false
+            } ,
+            "size_in_bytes" : {
+              "type" : "number" ,
+              "required" : false
+            } ,
+            "throttle_time" : {
+              "type" : "string" ,
+              "required" : false
+            } ,
+            "throttle_time_in_millis" : {
+              "type" : "number" ,
+              "required" : false
+            }
+          }
+        } ,
+        "fielddata" : {
+          "type" : "object" ,
+          "required" : false ,
+          "properties" : {
+            "memory_size" : {
+              "type" : "string" ,
+              "required" : false
+            } ,
+            "memory_size_in_bytes" : {
+              "type" : "number" ,
+              "required" : false
+            } ,
+            "evictions" : {
+              "type" : "number" ,
+              "required" : false
+            }
+          }
+        } ,
+        "filter_cache" : {
+          "type" : "object" ,
+          "required" : false ,
+          "properties" : {
+            "memory_size" : {
+              "type" : "string" ,
+              "required" : false
+            } ,
+            "memory_size_in_bytes" : {
+              "type" : "number" ,
+              "required" : false
+            } ,
+            "evictions" : {
+              "type" : "number" ,
+              "required" : false
+            }
+          }
+        } ,
+        "id_cache" : {
+          "type" : "object" ,
+          "required" : false ,
+          "properties" : {
+            "memory_size" : {
+              "type" : "string" ,
+              "required" : false
+            } ,
+            "memory_size_in_bytes" : {
+              "type" : "number" ,
+              "required" : false
+            }
+          }
+        } ,
+        "completion" : {
+          "type" : "object" ,
+          "required" : false ,
+          "properties" : {
+            "size" : {
+              "type" : "string" ,
+              "required" : false
+            } ,
+            "size_in_bytes" : {
+              "type" : "number" ,
+              "required" : false
+            }
+          }
+        } ,
+        "segments" : {
+          "type" : "object" ,
+          "required" : false ,
+          "properties" : {
+            "count" : {
+              "type" : "number" ,
+              "required" : false
+            }
+          }
+        }
+      }
+    } ,
+    "nodes" : {
+      "type" : "object" ,
+      "required" : false ,
+      "properties" : {
+        "count" : {
+          "type" : "object" ,
+          "required" : false ,
+          "properties" : {
+            "total" : {
+              "type" : "number" ,
+              "required" : false
+            } ,
+            "master_only" : {
+              "type" : "number" ,
+              "required" : false
+            } ,
+            "data_only" : {
+              "type" : "number" ,
+              "required" : false
+            } ,
+            "master_data" : {
+              "type" : "number" ,
+              "required" : false
+            } ,
+            "client" : {
+              "type" : "number" ,
+              "required" : false
+            }
+          }
+        } ,
+        "versions" : {
+          "type" : "array" ,
+          "required" : false ,
+          "items" : [
+            {
+              "type" : "string"
+            }
+          ]
+        } ,
+        "os" : {
+          "type" : "object" ,
+          "required" : false ,
+          "properties" : {
+            "available_processors" : {
+              "type" : "number" ,
+              "required" : false
+            } ,
+            "mem" : {
+              "type" : "object" ,
+              "required" : false ,
+              "properties" : {
+                "total" : {
+                  "type" : "string" ,
+                  "required" : false
+                } ,
+                "total_in_bytes" : {
+                  "type" : "number" ,
+                  "required" : false
+                }
+              }
+            } ,
+            "cpu" : {
+              "type" : "array" ,
+              "required" : false ,
+              "items" : [
+                {
+                  "type" : "object" ,
+                  "properties" : {
+                    "vendor" : {
+                      "type" : "string" ,
+                      "required" : false
+                    } ,
+                    "model" : {
+                      "type" : "string" ,
+                      "required" : false
+                    } ,
+                    "mhz" : {
+                      "type" : "number" ,
+                      "required" : false
+                    } ,
+                    "total_cores" : {
+                      "type" : "number" ,
+                      "required" : false
+                    } ,
+                    "total_sockets" : {
+                      "type" : "number" ,
+                      "required" : false
+                    } ,
+                    "cores_per_socket" : {
+                      "type" : "number" ,
+                      "required" : false
+                    } ,
+                    "cache_size" : {
+                      "type" : "string" ,
+                      "required" : false
+                    } ,
+                    "cache_size_in_bytes" : {
+                      "type" : "number" ,
+                      "required" : false
+                    } ,
+                    "count" : {
+                      "type" : "number" ,
+                      "required" : false
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        } ,
+        "process" : {
+          "type" : "object" ,
+          "required" : false ,
+          "properties" : {
+            "cpu" : {
+              "type" : "object" ,
+              "required" : false ,
+              "properties" : {
+                "percent" : {
+                  "type" : "number" ,
+                  "required" : false
+                }
+              }
+            } ,
+            "open_file_descriptors" : {
+              "type" : "object" ,
+              "required" : false ,
+              "properties" : {
+                "min" : {
+                  "type" : "number" ,
+                  "required" : false
+                } ,
+                "max" : {
+                  "type" : "number" ,
+                  "required" : false
+                } ,
+                "avg" : {
+                  "type" : "number" ,
+                  "required" : false
+                }
+              }
+            }
+          }
+        } ,
+        "jvm" : {
+          "type" : "object" ,
+          "required" : false ,
+          "properties" : {
+            "max_uptime" : {
+              "type" : "string" ,
+              "required" : false
+            } ,
+            "max_uptime_in_millis" : {
+              "type" : "number" ,
+              "required" : false
+            } ,
+            "version" : {
+              "type" : "array" ,
+              "required" : false ,
+              "items" : [
+                {
+                  "type" : "object" ,
+                  "properties" : {
+                    "version" : {
+                      "type" : "string" ,
+                      "required" : false
+                    } ,
+                    "vm_name" : {
+                      "type" : "string" ,
+                      "required" : false
+                    } ,
+                    "vm_version" : {
+                      "type" : "string" ,
+                      "required" : false
+                    } ,
+                    "vm_vendor" : {
+                      "type" : "string" ,
+                      "required" : false
+                    } ,
+                    "count" : {
+                      "type" : "number" ,
+                      "required" : false
+                    }
+                  }
+                }
+              ]
+            } ,
+            "mem" : {
+              "type" : "object" ,
+              "required" : false ,
+              "properties" : {
+                "heap_used" : {
+                  "type" : "string" ,
+                  "required" : false
+                } ,
+                "heap_used_in_bytes" : {
+                  "type" : "number" ,
+                  "required" : false
+                } ,
+                "heap_max" : {
+                  "type" : "string" ,
+                  "required" : false
+                } ,
+                "heap_max_in_bytes" : {
+                  "type" : "number" ,
+                  "required" : false
+                }
+              }
+            } ,
+            "threads" : {
+              "type" : "number" ,
+              "required" : false
+            }
+          }
+        } ,
+        "fs" : {
+          "type" : "object" ,
+          "required" : false ,
+          "properties" : {
+            "total" : {
+              "type" : "string" ,
+              "required" : false
+            } ,
+            "total_in_bytes" : {
+              "type" : "number" ,
+              "required" : false
+            } ,
+            "free" : {
+              "type" : "string" ,
+              "required" : false
+            } ,
+            "free_in_bytes" : {
+              "type" : "number" ,
+              "required" : false
+            } ,
+            "available" : {
+              "type" : "string" ,
+              "required" : false
+            } ,
+            "available_in_bytes" : {
+              "type" : "number" ,
+              "required" : false
+            } ,
+            "disk_reads" : {
+              "type" : "number" ,
+              "required" : false
+            } ,
+            "disk_writes" : {
+              "type" : "number" ,
+              "required" : false
+            } ,
+            "disk_io_op" : {
+              "type" : "number" ,
+              "required" : false
+            } ,
+            "disk_read_size" : {
+              "type" : "string" ,
+              "required" : false
+            } ,
+            "disk_read_size_in_bytes" : {
+              "type" : "number" ,
+              "required" : false
+            } ,
+            "disk_write_size" : {
+              "type" : "string" ,
+              "required" : false
+            } ,
+            "disk_write_size_in_bytes" : {
+              "type" : "number" ,
+              "required" : false
+            } ,
+            "disk_io_size" : {
+              "type" : "string" ,
+              "required" : false
+            } ,
+            "disk_io_size_in_bytes" : {
+              "type" : "number" ,
+              "required" : false
+            }
+          }
+        } ,
+        "plugins" : {
+          "type" : "array" ,
+          "required" : false ,
+          "items" : [
+            {
+              "type" : "object" ,
+              "properties" : {
+                "name" : {
+                  "type" : "string" ,
+                  "required" : false
+                } ,
+                "description" : {
+                  "type" : "string" ,
+                  "required" : false
+                } ,
+                "url" : {
+                  "type" : "string" ,
+                  "required" : false
+                } ,
+                "jvm" : {
+                  "type" : "boolean" ,
+                  "required" : false
+                } ,
+                "site" : {
+                  "type" : "boolean" ,
+                  "required" : false
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

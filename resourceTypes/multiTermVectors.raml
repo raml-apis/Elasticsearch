@@ -1,0 +1,8 @@
+get?: 
+  description: |
+    Multi termvectors API allows to get multiple termvectors based on an index, type and id. The response includes a docs array with all the fetched termvectors, each element having the structure provided by the termvectors API
+  body: 
+    application/json: 
+      schema: multiTermVectorsRequest
+      example: !include ../examples/multiTermVectorsRequest-example.json
+type: base

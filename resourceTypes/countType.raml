@@ -1,0 +1,21 @@
+type: base
+get: 
+  description: The count API allows to easily execute a query and get the number of matches for that query.
+  queryParameters: 
+    df: 
+      description: The default field to use when no field prefix is defined within the query.
+    analyzer: 
+      description: The analyzer name to be used when analyzing the query string.
+    default_operator: 
+      description: The default operator to be used, can be AND or OR. Defaults to OR.
+      default: OR
+  body: 
+    application/json: 
+      schema: countReq
+      example: !include ../examples/countReq-example.json
+  responses: 
+    200: 
+      body: 
+        application/json: 
+          schema: count
+          example: !include ../examples/count-example.json

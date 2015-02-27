@@ -1,0 +1,17 @@
+{
+  "required" : true ,
+  "$schema" : "http://json-schema.org/draft-03/schema" ,
+  "type" : "object" ,
+  "properties" : {
+    "persistent" : {
+      "type" : "object" ,
+      "required" : false ,
+      "properties" : {
+        "discovery.zen.minimum_master_nodes" : {
+          "type" : "string" ,
+          "required" : false
+        }
+      }
+    }
+  }
+}

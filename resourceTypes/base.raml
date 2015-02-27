@@ -1,0 +1,57 @@
+get?: 
+  queryParameters: 
+    pretty: 
+      description: When appending ?pretty=true to any request made, the JSON returned will be pretty formatted (use it for debugging only!).
+      type: boolean
+      example: true
+    format: 
+      description: Another option is to set format=yaml which will cause the result to be returned in the (sometimes) more readable yaml format.
+      example: yaml
+    human: 
+      description: 'Statistics are returned in a format suitable for humans (eg "exists_time": "1h" or "size": "1kb") and for computers (eg "exists_time_in_millis": 3600000` or "size_in_bytes": 1024). The human readable values can be turned off by adding ?human=false to the query string. This makes sense when the stats results are being consumed by a monitoring tool, rather than intended for human consumption. The default for the human flag is false.'
+      type: boolean
+      default: true
+      example: false
+    flat_settings: 
+      description: The flat_settings flag affects rendering of the lists of settings. When flat_settings` flag is true settings are returned in a flat format
+      type: boolean
+    case: 
+      description: All REST APIs accept the case parameter. When set to camelCase, all field names in the result will be returned in camel casing, otherwise, underscore casing will be used. Note, this does not apply to the source document indexed.
+      example: camelCase
+    callback: 
+      description: By default JSONP resposes are enabled. All REST APIs accept a callback parameter resulting in a JSONP result.
+      example: JSONP
+post?: 
+  queryParameters: 
+    pretty: 
+      description: When appending ?pretty=true to any request made, the JSON returned will be pretty formatted (use it for debugging only!).
+      type: boolean
+      example: true
+    format: 
+      description: Another option is to set format=yaml which will cause the result to be returned in the (sometimes) more readable yaml format.
+      example: yaml
+    human: 
+      description: 'Statistics are returned in a format suitable for humans (eg "exists_time": "1h" or "size": "1kb") and for computers (eg "exists_time_in_millis": 3600000` or "size_in_bytes": 1024). The human readable values can be turned off by adding ?human=false to the query string. This makes sense when the stats results are being consumed by a monitoring tool, rather than intended for human consumption. The default for the human flag is false.'
+      type: boolean
+      default: true
+      example: false
+    flat_settings: 
+      description: The flat_settings flag affects rendering of the lists of settings. When flat_settings` flag is true settings are returned in a flat format
+      type: boolean
+put?: 
+  queryParameters: 
+    pretty: 
+      description: When appending ?pretty=true to any request made, the JSON returned will be pretty formatted (use it for debugging only!).
+      type: boolean
+      example: true
+    format: 
+      description: Another option is to set format=yaml which will cause the result to be returned in the (sometimes) more readable yaml format.
+      example: yaml
+    human: 
+      description: 'Statistics are returned in a format suitable for humans (eg "exists_time": "1h" or "size": "1kb") and for computers (eg "exists_time_in_millis": 3600000` or "size_in_bytes": 1024). The human readable values can be turned off by adding ?human=false to the query string. This makes sense when the stats results are being consumed by a monitoring tool, rather than intended for human consumption. The default for the human flag is false.'
+      type: boolean
+      default: true
+      example: false
+    flat_settings: 
+      description: The flat_settings flag affects rendering of the lists of settings. When flat_settings` flag is true settings are returned in a flat format
+      type: boolean

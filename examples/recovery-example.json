@@ -1,0 +1,49 @@
+{
+  "index1" : {
+    "shards" : [
+      {
+        "id" : 0 ,
+        "type" : "snapshot" ,
+        "stage" : "index" ,
+        "primary" : true ,
+        "start_time" : "2014-02-24T12:15:59.716" ,
+        "stop_time" : 0 ,
+        "total_time_in_millis" : 175576 ,
+        "source" : {
+          "repository" : "my_repository" ,
+          "snapshot" : "my_snapshot" ,
+          "index" : "index1"
+        } ,
+        "target" : {
+          "id" : "ryqJ5lO5S4-lSFbGntkEkg" ,
+          "hostname" : "my.fqdn" ,
+          "ip" : "10.0.1.7" ,
+          "name" : "my_es_node"
+        } ,
+        "index" : {
+          "files" : {
+            "total" : 73 ,
+            "reused" : 0 ,
+            "recovered" : 69 ,
+            "percent" : "94.5%"
+          } ,
+          "bytes" : {
+            "total" : 79063092 ,
+            "reused" : 0 ,
+            "recovered" : 68891939 ,
+            "percent" : "87.1%"
+          } ,
+          "total_time_in_millis" : 0
+        } ,
+        "translog" : {
+          "recovered" : 0 ,
+          "total_time_in_millis" : 0
+        } ,
+        "start" : {
+          "check_index_time" : 0 ,
+          "total_time_in_millis" : 0
+        }
+      }
+    ]
+  }
+}

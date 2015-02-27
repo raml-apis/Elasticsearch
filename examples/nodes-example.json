@@ -1,0 +1,31 @@
+{
+  "cluster_name" : "test-cluster-MacBook-Air-de-David.local" ,
+  "nodes" : {
+    "hJLXmY_NTrCytiIMbX4_1g" : {
+      "name" : "node4" ,
+      "transport_address" : "inet[/172.18.58.139:9303]" ,
+      "hostname" : "MacBook-Air-de-David.local" ,
+      "version" : "0.90.0.Beta2-SNAPSHOT" ,
+      "http_address" : "inet[/172.18.58.139:9203]" ,
+      "plugins" : [
+        {
+          "name" : "test-plugin" ,
+          "description" : "test-plugin description" ,
+          "site" : true ,
+          "jvm" : false
+        } , {
+          "name" : "test-no-version-plugin" ,
+          "description" : "test-no-version-plugin description" ,
+          "site" : true ,
+          "jvm" : false
+        } , {
+          "name" : "dummy" ,
+          "description" : "No description found for dummy." ,
+          "url" : "/_plugin/dummy/" ,
+          "site" : false ,
+          "jvm" : true
+        }
+      ]
+    }
+  }
+}

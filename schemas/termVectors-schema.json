@@ -1,0 +1,153 @@
+{
+  "required" : true ,
+  "$schema" : "http://json-schema.org/draft-03/schema" ,
+  "type" : "object" ,
+  "properties" : {
+    "_id" : {
+      "type" : "string" ,
+      "required" : false
+    } ,
+    "_index" : {
+      "type" : "string" ,
+      "required" : false
+    } ,
+    "_type" : {
+      "type" : "string" ,
+      "required" : false
+    } ,
+    "_version" : {
+      "type" : "number" ,
+      "required" : false
+    } ,
+    "found" : {
+      "type" : "boolean" ,
+      "required" : false
+    } ,
+    "term_vectors" : {
+      "type" : "object" ,
+      "required" : false ,
+      "properties" : {
+        "text" : {
+          "type" : "object" ,
+          "required" : false ,
+          "properties" : {
+            "field_statistics" : {
+              "type" : "object" ,
+              "required" : false ,
+              "properties" : {
+                "doc_count" : {
+                  "type" : "number" ,
+                  "required" : false
+                } ,
+                "sum_doc_freq" : {
+                  "type" : "number" ,
+                  "required" : false
+                } ,
+                "sum_ttf" : {
+                  "type" : "number" ,
+                  "required" : false
+                }
+              }
+            } ,
+            "terms" : {
+              "type" : "object" ,
+              "required" : false ,
+              "properties" : {
+                "test" : {
+                  "type" : "object" ,
+                  "required" : false ,
+                  "properties" : {
+                    "doc_freq" : {
+                      "type" : "number" ,
+                      "required" : false
+                    } ,
+                    "term_freq" : {
+                      "type" : "number" ,
+                      "required" : false
+                    } ,
+                    "tokens" : {
+                      "type" : "array" ,
+                      "required" : false ,
+                      "items" : [
+                        {
+                          "type" : "object" ,
+                          "properties" : {
+                            "end_offset" : {
+                              "type" : "number" ,
+                              "required" : false
+                            } ,
+                            "payload" : {
+                              "type" : "string" ,
+                              "required" : false
+                            } ,
+                            "position" : {
+                              "type" : "number" ,
+                              "required" : false
+                            } ,
+                            "start_offset" : {
+                              "type" : "number" ,
+                              "required" : false
+                            }
+                          }
+                        }
+                      ]
+                    } ,
+                    "ttf" : {
+                      "type" : "number" ,
+                      "required" : false
+                    }
+                  }
+                } ,
+                "twitter" : {
+                  "type" : "object" ,
+                  "required" : false ,
+                  "properties" : {
+                    "doc_freq" : {
+                      "type" : "number" ,
+                      "required" : false
+                    } ,
+                    "term_freq" : {
+                      "type" : "number" ,
+                      "required" : false
+                    } ,
+                    "tokens" : {
+                      "type" : "array" ,
+                      "required" : false ,
+                      "items" : [
+                        {
+                          "type" : "object" ,
+                          "properties" : {
+                            "end_offset" : {
+                              "type" : "number" ,
+                              "required" : false
+                            } ,
+                            "payload" : {
+                              "type" : "string" ,
+                              "required" : false
+                            } ,
+                            "position" : {
+                              "type" : "number" ,
+                              "required" : false
+                            } ,
+                            "start_offset" : {
+                              "type" : "number" ,
+                              "required" : false
+                            }
+                          }
+                        }
+                      ]
+                    } ,
+                    "ttf" : {
+                      "type" : "number" ,
+                      "required" : false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

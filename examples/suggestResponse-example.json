@@ -1,0 +1,83 @@
+{
+  "suggest" : {
+    "my-title-suggestions-1" : [
+      {
+        "text" : "devloping" ,
+        "offset" : 0 ,
+        "length" : 9 ,
+        "options" : [
+          {
+            "text" : "developing" ,
+            "freq" : 77 ,
+            "score" : 0.8888889
+          } , {
+            "text" : "deloping" ,
+            "freq" : 1 ,
+            "score" : 0.875
+          } , {
+            "text" : "deploying" ,
+            "freq" : 2 ,
+            "score" : 0.7777778
+          }
+        ]
+      } , {
+        "text" : "distibutd" ,
+        "offset" : 10 ,
+        "length" : 9 ,
+        "options" : [
+          {
+            "text" : "distributed" ,
+            "freq" : 217 ,
+            "score" : 0.7777778
+          } , {
+            "text" : "disributed" ,
+            "freq" : 1 ,
+            "score" : 0.7777778
+          } , {
+            "text" : "distribute" ,
+            "freq" : 1 ,
+            "score" : 0.7777778
+          }
+        ]
+      } , {
+        "text" : "saerch" ,
+        "offset" : 20 ,
+        "length" : 6 ,
+        "options" : [
+          {
+            "text" : "search" ,
+            "freq" : 1038 ,
+            "score" : 0.8333333
+          } , {
+            "text" : "smerch" ,
+            "freq" : 3 ,
+            "score" : 0.8333333
+          } , {
+            "text" : "serch" ,
+            "freq" : 2 ,
+            "score" : 0.8
+          }
+        ]
+      } , {
+        "text" : "engies" ,
+        "offset" : 27 ,
+        "length" : 6 ,
+        "options" : [
+          {
+            "text" : "engines" ,
+            "freq" : 568 ,
+            "score" : 0.8333333
+          } , {
+            "text" : "engles" ,
+            "freq" : 3 ,
+            "score" : 0.8333333
+          } , {
+            "text" : "eggies" ,
+            "freq" : 1 ,
+            "score" : 0.8333333
+          }
+        ]
+      }
+    ]
+  }
+}

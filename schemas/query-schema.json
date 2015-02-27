@@ -1,0 +1,37 @@
+{
+  "required" : true ,
+  "$schema" : "http://json-schema.org/draft-03/schema" ,
+  "type" : "object" ,
+  "properties" : {
+    "_indices" : {
+      "type" : "object" ,
+      "required" : false ,
+      "properties" : {
+        "twitter" : {
+          "type" : "object" ,
+          "required" : false ,
+          "properties" : {
+            "_shards" : {
+              "type" : "object" ,
+              "required" : false ,
+              "properties" : {
+                "total" : {
+                  "type" : "number" ,
+                  "required" : false
+                } ,
+                "successful" : {
+                  "type" : "number" ,
+                  "required" : false
+                } ,
+                "failed" : {
+                  "type" : "number" ,
+                  "required" : false
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

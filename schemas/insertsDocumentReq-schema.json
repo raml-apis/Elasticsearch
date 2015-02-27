@@ -1,0 +1,19 @@
+{
+  "required" : true ,
+  "$schema" : "http://json-schema.org/draft-03/schema" ,
+  "type" : "object" ,
+  "properties" : {
+    "user" : {
+      "type" : "string" ,
+      "required" : false
+    } ,
+    "post_date" : {
+      "type" : "string" ,
+      "required" : false
+    } ,
+    "message" : {
+      "type" : "string" ,
+      "required" : false
+    }
+  }
+}

@@ -1,0 +1,3 @@
+{
+  "index.routing.allocation.include.tag" : "value1,value2"
+}
