@@ -1,7 +1,7 @@
 ---
 site: https://api-notebook.anypoint.mulesoft.com/notebooks#62f78d7c15dea3e8adbc
 apiNotebookVersion: 1.1.66
-title: Elasticsearch (settings, mprecolate, search, msearch, mappings)
+title: Settings, mprecolate, search, mappings
 ---
 
 ```javascript

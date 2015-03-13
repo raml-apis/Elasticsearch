@@ -1,7 +1,7 @@
 ---
 site: https://api-notebook.anypoint.mulesoft.com/notebooks/#3c072b9f6a6e7cf8fd69
 apiNotebookVersion: 1.1.66
-title: Elasticsearch (warmer, warmers, status, flush, bench, stats, refresh)
+title: Warmer, status, flush, bench, stats
 ---
 
 ```javascript
