@@ -1,7 +1,7 @@
 ---
 site: https://api-notebook.anypoint.mulesoft.com/notebooks#216c12d91095f2999799
 apiNotebookVersion: 1.1.66
-title: Elasticsearch (nodes, cache, segments, template, mtermvectors, mget, bulk, optimize, analyze)
+title: Nodes, cache, segments, optimize, analyze
 ---
 
 ```javascript
