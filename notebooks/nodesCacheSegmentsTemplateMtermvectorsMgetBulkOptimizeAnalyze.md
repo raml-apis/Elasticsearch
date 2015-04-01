@@ -31,7 +31,7 @@ PORT = prompt("Please, enter port of your Elasticsearch installation. For exampl
 ```
 
 ```javascript
-API.createClient('client', '/apiplatform/repository/public/organizations/30/apis/7941/versions/8099/definition',{
+API.createClient('client', '#REF_TAG_DEFENITION',{
   baseUriParameters:{
     protocol: PROTOCOL,
     domain: DOMAIN,
